@@ -9,15 +9,17 @@ class PresenterMainActivity(
     private val model : ModelMainActivity
 ) : BaseLifeCycle {
     override fun oncreate() {
-        showFragment_presenter()
+        setUpViewButom_nav()
+    }
+
+    private fun setUpViewButom_nav(){
+        view.setUpViewButom_nav(model.setUpViewButom_nav(), model.setmainfragment())
     }
 
     override fun ondestroy() {
     }
 
-    fun showFragment_presenter(){
-        view.showFragment_view(model.showFragment_model())
-    }
+
 
 
 }

@@ -21,7 +21,14 @@ class ViewMainActivity(contextInstance :Context, private val  setFragment: SetFr
         bottom_nav = view.bottomNavigationView
     }
 
-    fun showFragment_view(fragment: Fragment){
-        setFragment.addfragment(fragment)
+
+/**
+ * in baraye check kard default hast
+ */
+    fun setUpViewButom_nav(itemChecked : Int, mainfargment : Fragment){
+        bottom_nav.menu.getItem(itemChecked).isChecked = true
+        setFragment.addfragment(mainfargment)
     }
+
+
 }
