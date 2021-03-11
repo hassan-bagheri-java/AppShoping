@@ -10,10 +10,15 @@ class PresenterMainActivity(
 ) : BaseLifeCycle {
     override fun oncreate() {
         setUpViewButom_nav()
+        bottom_nav_setItemOnclick()
     }
 
     private fun setUpViewButom_nav(){
         view.setUpViewButom_nav(model.setUpViewButom_nav(), model.setmainfragment())
+    }
+
+    private fun bottom_nav_setItemOnclick (){
+        view.bottom_nav_setItemOnclick(model.bottom_nav_setItemOnclick())
     }
 
     override fun ondestroy() {

@@ -1,12 +1,16 @@
 package com.example.myapplication.di
 
+import com.example.myapplication.fragment.Acount_Fragment
 import com.example.myapplication.fragment.Home_Fragment
+import com.example.myapplication.fragment.Shop_Fragment
 import com.example.myapplication.model.ModelMainActivity
 import org.koin.dsl.module.module
 
 
 val fragmentModules = module {
     single { Home_Fragment() }
+    single { Shop_Fragment() }
+    single { Acount_Fragment() }
 }
 
 val modelModules = module {
