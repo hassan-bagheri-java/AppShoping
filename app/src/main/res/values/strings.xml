@@ -6,4 +6,8 @@
     <string name="home_">پروفایل</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="callme">تماس با ما</string>
+    <string name="error">گزارش خطا</string>
+    <string name="aboutme">درباره ما</string>
+    <string name="porsesh">پرسش های متداول</string>
 </resources>
