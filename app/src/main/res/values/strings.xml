@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">فروشگاه حسن باقری</string>
+    <string name="profile">profile</string>
+    <string name="home">خانه</string>
+    <string name="shop">سبد خرید</string>
+    <string name="home_">پروفایل</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
