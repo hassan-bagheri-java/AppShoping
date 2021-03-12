@@ -4,9 +4,10 @@ import android.content.Context
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.StrikethroughSpan
+import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 
-class CustomTextVieForTakhfif(context: Context) : AppCompatTextView(context) {
+class CustomTextVieForTakhfif(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
 
     init {
         drawLine()
