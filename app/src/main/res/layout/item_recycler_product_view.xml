@@ -40,8 +40,6 @@
             android:text="15000"
             android:textColor="@color/colorRed"
             app:layout_constraintBottom_toTopOf="@+id/item_recycle_product_real_price"
-            app:layout_constraintEnd_toStartOf="@+id/appCompatTextView"
-            app:layout_constraintHorizontal_bias="0.145"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -51,11 +49,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
             android:text="@string/price"
-            android:textSize="12sp"
             android:textColor="@color/colorTextGreen"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/appCompatTextView"
-            app:layout_constraintHorizontal_bias="0.145"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
