@@ -21,8 +21,7 @@ import org.jetbrains.anko.toast
 @SuppressLint("ViewConstructor")
 class ViewMainActivity(
     contextInstance: Context,
-    private val setFragment: SetFragment,
-    private val utility: Utility
+    private val setFragment: SetFragment
 ) :
     FrameLayout(contextInstance), PopupMenu.OnMenuItemClickListener {
 

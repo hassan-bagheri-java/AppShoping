@@ -13,7 +13,7 @@ import com.example.myapplication.utility.Utility
 import com.example.myapplication.view.ViewMainActivity
 import org.koin.android.ext.android.inject
 
-class MainActivity : AppCompatActivity() ,SetFragment , Utility {
+class MainActivity : AppCompatActivity() ,SetFragment  {
 
     private val model: ModelMainActivity by inject()
     private lateinit var presenter: PresenterMainActivity
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() ,SetFragment , Utility {
         super.onCreate(savedInstanceState)
 
 
-        val view_main = ViewMainActivity(this,this,this)
+        val view_main = ViewMainActivity(this,this)
         setContentView(view_main)
 
         presenter = PresenterMainActivity(view_main, model)
