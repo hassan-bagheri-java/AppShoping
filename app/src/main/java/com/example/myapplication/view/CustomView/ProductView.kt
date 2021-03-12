@@ -2,15 +2,12 @@ package com.example.myapplication.view.CustomView
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import kotlinx.android.synthetic.main.custom_view_product_view.view.*
-import java.util.jar.Attributes
 
 class ProductView ( context : Context, attrs : AttributeSet) : FrameLayout(context,attrs ) {
 
@@ -23,6 +20,16 @@ class ProductView ( context : Context, attrs : AttributeSet) : FrameLayout(conte
         texall = view.custom_view_more
         texatitle = view.custom_view_title
         recycker = view.recyclerView
+
+        /**
+         * set kar attrs
+         */
+
+        val typedArray = context.obtainStyledAttributes(attrs,R.styleable.ProductView)
+        val text = typedArray.getString(R.styleable.ProductView_titleText)
+        typedArray.recycle()
+
+        texall.text = text
 
         recycker.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
     }
