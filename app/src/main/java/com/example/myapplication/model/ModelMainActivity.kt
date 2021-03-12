@@ -1,7 +1,7 @@
 package com.example.myapplication.model
 
 import com.example.myapplication.fragment.Acount_Fragment
-import com.example.myapplication.fragment.Home_Fragment
+import com.example.myapplication.fragment.HomeFragment
 import com.example.myapplication.fragment.Shop_Fragment
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
@@ -9,7 +9,7 @@ import org.koin.standalone.inject
 class ModelMainActivity: KoinComponent {
 
     private val Acount_Fragment: Acount_Fragment by inject()
-    private val homeFragment: Home_Fragment by inject()
+    private val homeFragment: HomeFragment by inject()
     private val shopFragment: Shop_Fragment by inject()
 
     companion object{
