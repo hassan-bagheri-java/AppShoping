@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatTextView
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
+import com.example.myapplication.adpter.RecycleCategorieAdapter
 import com.example.myapplication.dataClass.DataProduct
 import com.example.myapplication.presenter.PresenterHomeFragment
 import kotlinx.android.synthetic.main.fragment_home_.*
@@ -51,6 +51,14 @@ HomeFragment : Fragment() {
 
     fun getDataRecycleProduct(data : List<DataProduct>){
         home_fragment_recycle_new.initRecycler(data)
+        home_fragment_recycle_porforosh.initRecycler(data)
+        home_fragment_recycle_takhfif.initRecycler(data)
+    }
+
+    fun setDataRecycleCategory(data :List<String>){
+        home_Fragment_recycle_categori.layoutManager =
+            LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
+        home_Fragment_recycle_categori.adapter = RecycleCategorieAdapter(context,data)
     }
 
     override fun onDestroy() {

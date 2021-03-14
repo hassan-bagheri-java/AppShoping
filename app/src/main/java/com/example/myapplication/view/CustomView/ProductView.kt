@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.aapter.RecycleItemProductAdapter
+import com.example.myapplication.adpter.RecycleItemProductAdapter
 import com.example.myapplication.dataClass.DataProduct
 import kotlinx.android.synthetic.main.custom_view_product_view.view.*
 

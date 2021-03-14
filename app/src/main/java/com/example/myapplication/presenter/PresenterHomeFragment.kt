@@ -11,11 +11,12 @@ class PresenterHomeFragment(
 
 
     override fun oncreate() {
-        getDataRecycleProduct()
+        setupdatarecyclers()
     }
 
-    private fun getDataRecycleProduct(){
+    private fun setupdatarecyclers(){
         view.getDataRecycleProduct(model.getDataRecycleProduct())
+        view.setDataRecycleCategory(model.setDataRecycleCategory())
     }
 
     override fun ondestroy() {

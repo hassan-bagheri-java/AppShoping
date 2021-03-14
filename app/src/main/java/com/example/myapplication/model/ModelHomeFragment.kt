@@ -5,4 +5,5 @@ import com.example.myapplication.test.DataTest
 class ModelHomeFragment {
 
     fun getDataRecycleProduct() = DataTest.getDataRecycleProduct()
+    fun setDataRecycleCategory() = DataTest.setDataRecycleCategory()
 }
