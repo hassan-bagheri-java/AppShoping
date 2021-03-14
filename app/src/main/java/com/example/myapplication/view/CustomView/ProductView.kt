@@ -1,4 +1,4 @@
-package com.example.myapplication.view.CustomView
+    package com.example.myapplication.view.CustomView
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,19 +7,21 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.aapter.RecycleItemProductAdapter
+import com.example.myapplication.dataClass.DataProduct
 import kotlinx.android.synthetic.main.custom_view_product_view.view.*
 
 class ProductView ( context : Context, attrs : AttributeSet) : FrameLayout(context,attrs ) {
 
     private val texall : AppCompatTextView
     private val texatitle : AppCompatTextView
-    private val recycker : RecyclerView
+    private val recycler : RecyclerView
 
     init {
         val view = inflate(context, R.layout.custom_view_product_view, this)
         texall = view.custom_view_more
         texatitle = view.custom_view_title
-        recycker = view.recyclerView
+        recycler = view.recyclerView
 
         /**
          * set kar attrs
@@ -29,8 +31,15 @@ class ProductView ( context : Context, attrs : AttributeSet) : FrameLayout(conte
         val text = typedArray.getString(R.styleable.ProductView_titleText)
         typedArray.recycle()
 
-        texall.text = text
+        texatitle.text = text
 
-        recycker.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
+        recycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
+    }
+
+    /**
+     * inja mimyam maghdar dahi mikonimash
+     */
+    fun initRecycler(data: List<DataProduct>){
+        recycler.adapter = RecycleItemProductAdapter(context, data)
     }
 }

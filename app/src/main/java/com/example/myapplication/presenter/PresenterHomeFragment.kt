@@ -11,6 +11,11 @@ class PresenterHomeFragment(
 
 
     override fun oncreate() {
+        getDataRecycleProduct()
+    }
+
+    private fun getDataRecycleProduct(){
+        view.getDataRecycleProduct(model.getDataRecycleProduct())
     }
 
     override fun ondestroy() {

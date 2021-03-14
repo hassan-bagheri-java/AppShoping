@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.dataClass.DataProduct
 import com.example.myapplication.presenter.PresenterHomeFragment
+import kotlinx.android.synthetic.main.fragment_home_.*
 import org.koin.android.ext.android.inject
 
 // TODO: Rename parameter arguments, choose names that match
@@ -18,7 +20,9 @@ private const val ARG_PARAM2 = "param2"
 
 
 
-class HomeFragment : Fragment() {
+class
+
+HomeFragment : Fragment() {
 
     private val presenter : PresenterHomeFragment by inject()
 
@@ -43,6 +47,10 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         presenter.oncreate()
+    }
+
+    fun getDataRecycleProduct(data : List<DataProduct>){
+        home_fragment_recycle_new.initRecycler(data)
     }
 
     override fun onDestroy() {

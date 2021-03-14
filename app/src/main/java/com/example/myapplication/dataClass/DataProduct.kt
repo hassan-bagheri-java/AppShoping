@@ -1,6 +1,6 @@
 package com.example.myapplication.dataClass
 
-data class DataProdyct (
+data class DataProduct (
     val id : Int,
     val title : String,
     val imgAddress : String,

@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:paddingBottom="8dp"
+    android:paddingBottom="5dp"
     android:layout_height="wrap_content">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
+        tools:listitem="@layout/item_recycler_product_view"
+        tools:itemCount="5"
         android:layout_width="395dp"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         android:layout_marginTop="76dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,5 +49,5 @@
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="بیشتر" />
+        android:text="@string/more" />
 </androidx.constraintlayout.widget.ConstraintLayout>
