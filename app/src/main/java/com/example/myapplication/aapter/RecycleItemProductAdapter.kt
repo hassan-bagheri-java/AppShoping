@@ -6,7 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.dataClass.DataProdyct
+import com.example.myapplication.utility.PicasoUtility
 import kotlinx.android.synthetic.main.item_recycler_product_view.view.*
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
 
 class RecycleItemProductAdapter(private val data: List<DataProdyct>) :
     RecyclerView.Adapter<RecycleItemProductAdapter.ViewHolder>() {
@@ -25,15 +28,30 @@ class RecycleItemProductAdapter(private val data: List<DataProdyct>) :
         holder.setData(data[position])
         }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) , KoinComponent {
 
+
+        private val picasso:PicasoUtility by inject()
         private val rootview = itemView.item_recycle_product_product
         private val img = itemView.item_recycle_product_img_product
         private val title = itemView.item_recycle_product_name_product
         private val price = itemView.item_recycle_product_real_price
         private val takhfif = itemView.item_recycle_product_takhfif
         
-        fun setData(data: DataProdyct){}
+        fun setData(data: DataProdyct){
+
+            picasso.setimage(data.imgAddress,img)
+            title.text = data.title
+
+            if (data.takhfif) {
+                takhfif.visibility = View.VISIBLE
+                takhfif.setCustomText(data.price)
+                price.text = data.pricetakhfif
+            }else{
+                takhfif.visibility = View.INVISIBLE
+                price.text = data.price
+            }
+        }
     }
 
 
