@@ -7,6 +7,7 @@ import com.example.myapplication.fragment.HomeFragment
 import com.example.myapplication.fragment.Shop_Fragment
 import com.example.myapplication.model.ModelHomeFragment
 import com.example.myapplication.model.ModelMainActivity
+import com.example.myapplication.model.ModelMoreActivity
 import com.example.myapplication.presenter.PresenterHomeFragment
 import com.example.myapplication.utility.PicasoUtility
 import com.squareup.picasso.Picasso
@@ -22,6 +23,7 @@ val fragmentModules = module {
 val modelModules = module {
     single { ModelMainActivity() }
     single { ModelHomeFragment() }
+    single { ModelMoreActivity() }
 }
 
 val apiModules = module {

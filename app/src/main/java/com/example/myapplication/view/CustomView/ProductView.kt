@@ -7,11 +7,13 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.activity.MoreActivity
 import com.example.myapplication.adpter.RecycleItemProductAdapter
 import com.example.myapplication.dataClass.DataProduct
 import kotlinx.android.synthetic.main.custom_view_product_view.view.*
+import org.jetbrains.anko.startActivity
 
-class ProductView ( context : Context, attrs : AttributeSet) : FrameLayout(context,attrs ) {
+    class ProductView ( context : Context, attrs : AttributeSet) : FrameLayout(context,attrs ) {
 
     private val texall : AppCompatTextView
     private val texatitle : AppCompatTextView
@@ -41,5 +43,7 @@ class ProductView ( context : Context, attrs : AttributeSet) : FrameLayout(conte
      */
     fun initRecycler(data: List<DataProduct>){
         recycler.adapter = RecycleItemProductAdapter(context, data)
+        texall.setOnClickListener {context.startActivity<MoreActivity>()
+        }
     }
 }
