@@ -11,9 +11,14 @@ class PresenterMoreActivity(
 
 
 
+    fun setTitleText() {
+        view.setTitleText(model.setTitleText()?:"")
+    }
+
     override fun oncreate() {
         onClickHandler()
         setDataRecycler()
+        setTitleText()
     }
 
     override fun ondestroy() {

@@ -38,6 +38,10 @@ class ViewMoreActivity (contextInstance : Context, private val utility: Utility)
         recycleview.adapter = RecycleItemMoreAdapter(context,data)
     }
 
+    fun setTitleText(title:String){
+        txtTitle.text = title
+    }
+
     fun onClickHandler(){
         imgBack.setOnClickListener{ utility.onfinished()}
     }

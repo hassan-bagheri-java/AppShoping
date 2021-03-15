@@ -11,12 +11,13 @@ import org.koin.android.ext.android.inject
 
 class MoreActivity : AppCompatActivity() , Utility {
 
-    private val model : ModelMoreActivity by inject()
     private lateinit var presenter: PresenterMoreActivity
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val model = ModelMoreActivity(this)
 
         val view = ViewMoreActivity(this,this)
         setContentView(view)

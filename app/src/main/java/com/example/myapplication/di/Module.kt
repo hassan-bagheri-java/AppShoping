@@ -23,7 +23,7 @@ val fragmentModules = module {
 val modelModules = module {
     single { ModelMainActivity() }
     single { ModelHomeFragment() }
-    single { ModelMoreActivity() }
+
 }
 
 val apiModules = module {

@@ -19,6 +19,13 @@ import org.jetbrains.anko.startActivity
     private val texatitle : AppCompatTextView
     private val recycler : RecyclerView
 
+
+    companion object{
+
+        const val TITTLE_KEY = "title"
+        const val TYPE_KEY = "type"
+    }
+
     init {
         val view = inflate(context, R.layout.custom_view_product_view, this)
         texall = view.custom_view_more
@@ -43,7 +50,7 @@ import org.jetbrains.anko.startActivity
      */
     fun initRecycler(data: List<DataProduct>){
         recycler.adapter = RecycleItemProductAdapter(context, data)
-        texall.setOnClickListener {context.startActivity<MoreActivity>()
+        texall.setOnClickListener {context.startActivity<MoreActivity>(TITTLE_KEY to texatitle.text.toString())
         }
     }
 }
