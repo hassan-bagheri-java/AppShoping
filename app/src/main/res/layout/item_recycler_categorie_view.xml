@@ -5,7 +5,7 @@
     android:id="@+id/recyclerView_categori_txt"
     android:text="لوازم خانگی"
     android:layout_margin="3dp"
-    android:textSize="16sp"
+    android:textSize="14sp"
     android:padding="7dp"
     android:textColor="@color/white"
     android:background="@drawable/back_ground_item_categorie_view"
