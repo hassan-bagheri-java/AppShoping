@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.adpter.RecycleCategorieAdapter
+import com.example.myapplication.dataClass.DataImgBannerUrl
 import com.example.myapplication.dataClass.DataProduct
 import com.example.myapplication.enum.TypeGetProduct
 import com.example.myapplication.presenter.PresenterHomeFragment
+import com.example.myapplication.utility.PicasoUtility
 import kotlinx.android.synthetic.main.fragment_home_.*
 import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
@@ -27,6 +29,8 @@ class
 HomeFragment : Fragment() {
 
     private val presenter : PresenterHomeFragment by inject()
+    private val picaso : PicasoUtility by inject()
+
 
 
 
@@ -51,16 +55,43 @@ HomeFragment : Fragment() {
         presenter.oncreate()
     }
 
-    fun getDataRecycleProduct(data : List<DataProduct>){
+    fun getDataRecycleProduct_new(data : List<DataProduct>){
         home_fragment_recycle_new.initRecycler(data, TypeGetProduct.NEW_PRODUCT)
-        home_fragment_recycle_porforosh.initRecycler(data, TypeGetProduct.PORFOROSH_PRODUCT)
-        home_fragment_recycle_takhfif.initRecycler(data,TypeGetProduct.TAKHFIF_PRODUCT)
+
     }
+
+    fun getDataRecycleProduct__takhfif(data : List<DataProduct>){
+        home_fragment_recycle_takhfif.initRecycler(data,TypeGetProduct.TAKHFIF_PRODUCT)
+
+
+    }
+
+    fun getDataRecycleProduct_porforosh(data : List<DataProduct>){
+        home_fragment_recycle_porforosh.initRecycler(data, TypeGetProduct.PORFOROSH_PRODUCT)
+
+
+    }
+
+
+
+
+
+
+
 
     fun setDataRecycleCategory(data :List<String>){
         home_Fragment_recycle_categori.layoutManager =
             LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
         home_Fragment_recycle_categori.adapter = RecycleCategorieAdapter(context,data)
+    }
+
+    fun setImageInBannerr(data : DataImgBannerUrl){
+        picaso.setimage(data.image1,home_fragment_banner1)
+        picaso.setimage(data.image2,home_fragment_banner2)
+    }
+
+    fun showToast(text: String){
+        context?.toast(text)
     }
 
 

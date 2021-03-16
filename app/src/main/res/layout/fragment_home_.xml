@@ -44,7 +44,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/banner1"
                 app:layout_constraintBottom_toTopOf="@+id/home_fragment_recycle_new"
                 app:layout_constraintTop_toBottomOf="@+id/home_fragment_recycle_takhfif"
                 tools:ignore="UnknownIdInLayout" />
@@ -66,7 +65,6 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="5dp"
-            android:src="@drawable/banner2"
             app:layout_constraintBottom_toTopOf="@+id/home_fragment_recycle_porforosh"
             app:layout_constraintTop_toBottomOf="@+id/home_fragment_recycle_new"
             tools:ignore="UnknownIdInLayout" />
