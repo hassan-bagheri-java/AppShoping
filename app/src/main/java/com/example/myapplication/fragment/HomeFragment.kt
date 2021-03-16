@@ -52,7 +52,12 @@ HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        presenter.oncreate()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onresume()
     }
 
     fun getDataRecycleProduct_new(data : List<DataProduct>){

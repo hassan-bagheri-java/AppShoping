@@ -6,8 +6,8 @@ import com.example.myapplication.net.ApiService
 import com.example.myapplication.net.CountryPreesenterListner
 import com.example.myapplication.test.DataTest
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
 class ModelHomeFragment {
 
@@ -16,13 +16,15 @@ class ModelHomeFragment {
     fun getDataRecycleProduct() = DataTest.getDataRecycleProduct()
     fun setDataRecycleCategory() = DataTest.setDataRecycleCategory()
     fun setImageInBannerr(mListner: CountryPreesenterListner<DataImgBannerUrl>) {
+
         apiService.getAPi()
             .getImgeUrlForBanner()
-            .equals(object : retrofit2.Callback<DataImgBannerUrl> {
+            .enqueue(object : Callback<DataImgBannerUrl> {
                 override fun onFailure(call: Call<DataImgBannerUrl>, t: Throwable) {
 
                     Log.e("Hassan", "error in get Data :   ${t.message}")
                     mListner.onFailure("خظایی در دریافت اطلاعات صورت گرفته است.")
+                    Log.e("hassan" ,"get image failed")
 
                 }
 

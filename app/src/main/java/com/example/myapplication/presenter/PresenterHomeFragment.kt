@@ -13,7 +13,11 @@ class PresenterHomeFragment(
 
 
     override fun oncreate() {
+    }
+
+    override fun onresume() {
         setup()
+        setUpBanners()
     }
 
     private fun setup(){
@@ -23,8 +27,10 @@ class PresenterHomeFragment(
         view.setDataRecycleCategory(model.setDataRecycleCategory())
     }
 
-    override fun ondestroy() {
+    private fun setUpBanners(){
+        model.setImageInBannerr(this)
     }
+
 
     override fun onResponse(data: DataImgBannerUrl) {
         view.setImageInBannerr(data)
@@ -33,4 +39,9 @@ class PresenterHomeFragment(
     override fun onFailure(error: String) {
         view.showToast(error)
     }
+
+
+    override fun ondestroy() {
+    }
+
 }
