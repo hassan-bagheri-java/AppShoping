@@ -13,8 +13,10 @@ import com.example.myapplication.R
 import com.example.myapplication.adpter.RecycleItemMoreAdapter
 import com.example.myapplication.adpter.RecycleItemProductAdapter
 import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.enum.TypeGetProduct
 import com.example.myapplication.utility.Utility
 import kotlinx.android.synthetic.main.activity_more.view.*
+import org.jetbrains.anko.toast
 
 @SuppressLint("ViewConstructor")
 class ViewMoreActivity (contextInstance : Context, private val utility: Utility) : FrameLayout(contextInstance) {
@@ -41,6 +43,16 @@ class ViewMoreActivity (contextInstance : Context, private val utility: Utility)
     fun setTitleText(title:String){
         txtTitle.text = title
     }
+
+    fun settypeproduct(type : TypeGetProduct){
+        when(type){
+            TypeGetProduct.TAKHFIF_PRODUCT -> context?.toast("takhfif")
+            TypeGetProduct.NEW_PRODUCT -> context?.toast("new")
+            else -> context?.toast("porforosh")
+
+        }
+    }
+
 
     fun onClickHandler(){
         imgBack.setOnClickListener{ utility.onfinished()}

@@ -30,5 +30,6 @@ class PresenterMoreActivity(
 
     private fun setDataRecycler(){
         view.setDataRecycler(model.setDataRecycler())
+        view.settypeproduct(model.settypeproduct())
     }
 }

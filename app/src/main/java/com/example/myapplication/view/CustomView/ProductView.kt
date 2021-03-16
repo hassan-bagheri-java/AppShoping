@@ -1,4 +1,4 @@
-    package com.example.myapplication.view.CustomView
+package com.example.myapplication.view.CustomView
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,17 +10,18 @@ import com.example.myapplication.R
 import com.example.myapplication.activity.MoreActivity
 import com.example.myapplication.adpter.RecycleItemProductAdapter
 import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.enum.TypeGetProduct
 import kotlinx.android.synthetic.main.custom_view_product_view.view.*
 import org.jetbrains.anko.startActivity
 
-    class ProductView ( context : Context, attrs : AttributeSet) : FrameLayout(context,attrs ) {
+class ProductView(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
 
-    private val texall : AppCompatTextView
-    private val texatitle : AppCompatTextView
-    private val recycler : RecyclerView
+    private val texall: AppCompatTextView
+    private val texatitle: AppCompatTextView
+    private val recycler: RecyclerView
 
 
-    companion object{
+    companion object {
 
         const val TITTLE_KEY = "title"
         const val TYPE_KEY = "type"
@@ -36,21 +37,25 @@ import org.jetbrains.anko.startActivity
          * set kar attrs
          */
 
-        val typedArray = context.obtainStyledAttributes(attrs,R.styleable.ProductView)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ProductView)
         val text = typedArray.getString(R.styleable.ProductView_titleText)
         typedArray.recycle()
 
         texatitle.text = text
 
-        recycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
+        recycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true)
     }
 
     /**
      * inja mimyam maghdar dahi mikonimash
      */
-    fun initRecycler(data: List<DataProduct>){
+    fun initRecycler(data: List<DataProduct> , type : TypeGetProduct) {
         recycler.adapter = RecycleItemProductAdapter(context, data)
-        texall.setOnClickListener {context.startActivity<MoreActivity>(TITTLE_KEY to texatitle.text.toString())
+        texall.setOnClickListener {
+            context.startActivity<MoreActivity>(
+                TITTLE_KEY to texatitle.text.toString(),
+                TYPE_KEY to type
+            )
         }
     }
 }

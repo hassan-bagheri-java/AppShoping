@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.adpter.RecycleCategorieAdapter
 import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.enum.TypeGetProduct
 import com.example.myapplication.presenter.PresenterHomeFragment
 import kotlinx.android.synthetic.main.fragment_home_.*
+import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
 
 // TODO: Rename parameter arguments, choose names that match
@@ -50,9 +52,9 @@ HomeFragment : Fragment() {
     }
 
     fun getDataRecycleProduct(data : List<DataProduct>){
-        home_fragment_recycle_new.initRecycler(data)
-        home_fragment_recycle_porforosh.initRecycler(data)
-        home_fragment_recycle_takhfif.initRecycler(data)
+        home_fragment_recycle_new.initRecycler(data, TypeGetProduct.NEW_PRODUCT)
+        home_fragment_recycle_porforosh.initRecycler(data, TypeGetProduct.PORFOROSH_PRODUCT)
+        home_fragment_recycle_takhfif.initRecycler(data,TypeGetProduct.TAKHFIF_PRODUCT)
     }
 
     fun setDataRecycleCategory(data :List<String>){
@@ -60,6 +62,7 @@ HomeFragment : Fragment() {
             LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
         home_Fragment_recycle_categori.adapter = RecycleCategorieAdapter(context,data)
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
