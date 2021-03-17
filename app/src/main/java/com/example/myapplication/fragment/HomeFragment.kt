@@ -1,10 +1,13 @@
 package com.example.myapplication.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.adpter.RecycleCategorieAdapter
@@ -18,23 +21,10 @@ import kotlinx.android.synthetic.main.fragment_home_.*
 import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
-
-class
-
-HomeFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     private val presenter : PresenterHomeFragment by inject()
-    private val picaso : PicasoUtility by inject()
-
-
-
-
+    private val picasso : PicasoUtility by inject()
 
 
     override fun onCreateView(
@@ -43,13 +33,6 @@ HomeFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_home_, container, false)
     }
-
-
-
-
-
-
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -62,27 +45,13 @@ HomeFragment : Fragment() {
     }
 
     fun getDataRecycleProduct_new(data : List<DataProduct>){
-        home_fragment_recycle_new.initRecycler(data, TypeGetProduct.NEW_PRODUCT)
-
-    }
+        home_fragment_recycle_new.initRecycler(data, TypeGetProduct.NEW_PRODUCT) }
 
     fun getDataRecycleProduct__takhfif(data : List<DataProduct>){
-        home_fragment_recycle_takhfif.initRecycler(data,TypeGetProduct.TAKHFIF_PRODUCT)
-
-
-    }
+        home_fragment_recycle_takhfif.initRecycler(data,TypeGetProduct.TAKHFIF_PRODUCT) }
 
     fun getDataRecycleProduct_porforosh(data : List<DataProduct>){
-        home_fragment_recycle_porforosh.initRecycler(data, TypeGetProduct.PORFOROSH_PRODUCT)
-
-
-    }
-
-
-
-
-
-
+        home_fragment_recycle_porforosh.initRecycler(data, TypeGetProduct.PORFOROSH_PRODUCT) }
 
 
     fun setDataRecycleCategory(data :List<DataCategoriItem>){
@@ -92,8 +61,20 @@ HomeFragment : Fragment() {
     }
 
     fun setImageInBannerr(data : DataImgBannerUrl){
-        picaso.setimage(data.image1,home_fragment_banner1)
-        picaso.setimage(data.image2,home_fragment_banner2)
+        picasso.setimage(data.image1,home_fragment_banner1)
+        picasso.setimage(data.image2,home_fragment_banner2)
+
+        home_fragment_banner1.setOnClickListener{
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(data.clickimage1)
+            startActivity(intent)
+        }
+
+        home_fragment_banner2.setOnClickListener{
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(data.clickimage2)
+            startActivity(intent)
+        }
     }
 
     fun showToast(text: String){
