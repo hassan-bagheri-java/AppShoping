@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.adpter.RecycleCategorieAdapter
+import com.example.myapplication.dataClass.DataCategoriItem
 import com.example.myapplication.dataClass.DataImgBannerUrl
 import com.example.myapplication.dataClass.DataProduct
 import com.example.myapplication.enum.TypeGetProduct
@@ -84,7 +85,7 @@ HomeFragment : Fragment() {
 
 
 
-    fun setDataRecycleCategory(data :List<String>){
+    fun setDataRecycleCategory(data :List<DataCategoriItem>){
         home_Fragment_recycle_categori.layoutManager =
             LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
         home_Fragment_recycle_categori.adapter = RecycleCategorieAdapter(context,data)
