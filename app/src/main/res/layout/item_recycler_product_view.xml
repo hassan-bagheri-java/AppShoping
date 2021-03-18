@@ -40,7 +40,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="15000"
             android:textColor="@color/colorRed"
             app:layout_constraintBottom_toTopOf="@+id/item_recycle_product_real_price"
             app:layout_constraintStart_toStartOf="parent" />

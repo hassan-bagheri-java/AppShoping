@@ -38,7 +38,7 @@ class RecycleItemProductAdapter(private val context: Context, private val data: 
         private val img = itemView.item_recycle_product_img_product
         private val title = itemView.item_recycle_product_name_product
         private val price = itemView.item_recycle_product_real_price
-        private val takhfif = itemView.item_recycle_product_takhfif
+        private val takhfif_price = itemView.item_recycle_product_takhfif
 
         fun setData(data: DataProduct) {
 
@@ -46,11 +46,11 @@ class RecycleItemProductAdapter(private val context: Context, private val data: 
             title.text = data.title
 
             if (data.takhfif) {
-                takhfif.visibility = View.VISIBLE
-                takhfif.setCustomText(data.price)
+                takhfif_price.visibility = View.VISIBLE
+                takhfif_price.setCustomText(data.price)
                 price.text = data.pricetakhfif
             } else {
-                takhfif.visibility = View.INVISIBLE
+                takhfif_price.visibility = View.VISIBLE
                 price.text = data.price
             }
 

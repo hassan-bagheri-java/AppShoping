@@ -21,10 +21,10 @@ class ApiService {
         @GET("webservice/new_products.json")
         fun getDataNewProducts(): Call<List<DataProduct>>
 
-        @GET("webservice/takhfif_products.json")
+        @GET("webservice/new_products.json")
         fun getDataTakfifProducts(): Call<List<DataProduct>>
 
-        @GET("webservice/porforosh_products.json")
+        @GET("webservice/new_products.json")
         fun getDataPorForoshProducts(): Call<List<DataProduct>>
 
 
