@@ -2,6 +2,7 @@ package com.example.myapplication.net
 
 import com.example.myapplication.dataClass.DataCategoriItem
 import com.example.myapplication.dataClass.DataImgBannerUrl
+import com.example.myapplication.dataClass.DataProduct
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
@@ -16,6 +17,15 @@ class ApiService {
 
         @GET("webservice/categorie.json")
         fun setDataRecycleCategory(): Call<List<DataCategoriItem>>
+
+        @GET("webservice/new_products.json")
+        fun getDataNewProducts(): Call<List<DataProduct>>
+
+        @GET("webservice/takhfif_products.json")
+        fun getDataTakfifProducts(): Call<List<DataProduct>>
+
+        @GET("webservice/porforosh_products.json")
+        fun getDataPorForoshProducts(): Call<List<DataProduct>>
 
 
     }

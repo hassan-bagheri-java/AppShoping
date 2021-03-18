@@ -2,6 +2,7 @@ package com.example.myapplication.presenter
 
 import com.example.myapplication.dataClass.DataCategoriItem
 import com.example.myapplication.dataClass.DataImgBannerUrl
+import com.example.myapplication.dataClass.DataProduct
 import com.example.myapplication.etc.BaseLifeCycle
 import com.example.myapplication.fragment.HomeFragment
 import com.example.myapplication.model.ModelHomeFragment
@@ -14,20 +15,15 @@ class PresenterHomeFragment(
 
 
     override fun oncreate() {
+        setDataRecyclers()
+        setUpBanners()
     }
 
 
     override fun onresume() {
-        setup()
-        setUpBanners()
-    }
-
-    private fun setup() {
-        view.getDataRecycleProduct_new(model.getDataRecycleProduct())
-        view.getDataRecycleProduct__takhfif(model.getDataRecycleProduct())
-        view.getDataRecycleProduct_porforosh(model.getDataRecycleProduct())
 
     }
+
 
     private fun setUpBanners() {
         model.setImageInBannerr(object : CountryPreesenterListner<DataImgBannerUrl> {
@@ -60,6 +56,45 @@ class PresenterHomeFragment(
 
 
     }
+
+
+    private fun setDataRecyclers(){
+        model.getDataNewRecycleProduct(object : CountryPreesenterListner<List<DataProduct>>{
+            override fun onResponse(data: List<DataProduct>) {
+                view.getDataRecycleProduct_new(data)
+            }
+
+            override fun onFailure(error: String) {
+                view.showToast(error)
+            }
+
+        })
+
+
+        model.getDataTakfifProducts(object : CountryPreesenterListner<List<DataProduct>>{
+            override fun onResponse(data: List<DataProduct>) {
+                view.getDataRecycleProduct__takhfif(data)
+            }
+
+            override fun onFailure(error: String) {
+                view.showToast(error)
+            }
+
+        })
+
+        model.getDataPorForoshProducts(object : CountryPreesenterListner<List<DataProduct>>{
+            override fun onResponse(data: List<DataProduct>) {
+                view.getDataRecycleProduct_porforosh(data)
+            }
+
+            override fun onFailure(error: String) {
+                view.showToast(error)
+            }
+
+        })
+    }
+
+
 
     override fun ondestroy() {}
 }

@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.adpter.RecycleCategorieAdapter
 import com.example.myapplication.dataClass.DataCategoriItem
@@ -25,6 +27,9 @@ class HomeFragment : Fragment() {
 
     private val presenter : PresenterHomeFragment by inject()
     private val picasso : PicasoUtility by inject()
+    private lateinit var img_baner1:AppCompatImageView
+    private lateinit var recycle_categori:RecyclerView
+    private lateinit var img_baner2:AppCompatImageView
 
 
     override fun onCreateView(
@@ -36,12 +41,15 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        img_baner1 = home_fragment_banner1
+        img_baner2 = home_fragment_banner2
+        recycle_categori = home_Fragment_recycle_categori
 
     }
 
     override fun onResume() {
         super.onResume()
-        presenter.onresume()
+        presenter.oncreate()
     }
 
     fun getDataRecycleProduct_new(data : List<DataProduct>){
@@ -55,22 +63,22 @@ class HomeFragment : Fragment() {
 
 
     fun setDataRecycleCategory(data :List<DataCategoriItem>){
-        home_Fragment_recycle_categori.layoutManager =
+        recycle_categori.layoutManager =
             LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
-        home_Fragment_recycle_categori.adapter = RecycleCategorieAdapter(context,data)
+        recycle_categori.adapter = RecycleCategorieAdapter(context,data)
     }
 
     fun setImageInBannerr(data : DataImgBannerUrl){
-        picasso.setimage(data.image1,home_fragment_banner1)
-        picasso.setimage(data.image2,home_fragment_banner2)
+        picasso.setimage(data.image1,img_baner1)
+        picasso.setimage(data.image2,img_baner2)
 
-        home_fragment_banner1.setOnClickListener{
+        img_baner1.setOnClickListener{
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(data.clickimage1)
             startActivity(intent)
         }
 
-        home_fragment_banner2.setOnClickListener{
+        img_baner2.setOnClickListener{
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(data.clickimage2)
             startActivity(intent)
