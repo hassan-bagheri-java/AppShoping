@@ -19,6 +19,7 @@ import com.example.myapplication.dataClass.DataProduct
 import com.example.myapplication.enum.TypeGetProduct
 import com.example.myapplication.presenter.PresenterHomeFragment
 import com.example.myapplication.utility.PicasoUtility
+import kotlinx.android.synthetic.main.activity_more.*
 import kotlinx.android.synthetic.main.fragment_home_.*
 import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
@@ -44,12 +45,13 @@ class HomeFragment : Fragment() {
         img_baner1 = home_fragment_banner1
         img_baner2 = home_fragment_banner2
         recycle_categori = home_Fragment_recycle_categori
+        presenter.oncreate()
 
     }
 
     override fun onResume() {
         super.onResume()
-        presenter.oncreate()
+       showProgress()
     }
 
     fun getDataRecycleProduct_new(data : List<DataProduct>){
@@ -59,7 +61,9 @@ class HomeFragment : Fragment() {
         home_fragment_recycle_takhfif.initRecycler(data,TypeGetProduct.TAKHFIF_PRODUCT) }
 
     fun getDataRecycleProduct_porforosh(data : List<DataProduct>){
-        home_fragment_recycle_porforosh.initRecycler(data, TypeGetProduct.PORFOROSH_PRODUCT) }
+        home_fragment_recycle_porforosh.initRecycler(data, TypeGetProduct.PORFOROSH_PRODUCT)
+        hideProgress()
+    }
 
 
     fun setDataRecycleCategory(data :List<DataCategoriItem>){
@@ -88,6 +92,18 @@ class HomeFragment : Fragment() {
     fun showToast(text: String){
         context?.toast(text)
     }
+
+    private fun showProgress(){
+        home_Fragment_progeresbar.visibility = View.VISIBLE
+        home_frament_root.visibility = View.INVISIBLE
+    }
+
+    private  fun hideProgress(){
+        home_Fragment_progeresbar.visibility = View.INVISIBLE
+        home_frament_root.visibility = View.VISIBLE
+    }
+
+
 
 
     override fun onDestroy() {
