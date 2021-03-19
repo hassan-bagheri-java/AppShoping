@@ -8,6 +8,7 @@ import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 class ApiService {
 
@@ -26,6 +27,13 @@ class ApiService {
 
         @GET("webservice/new_products.json")
         fun getDataPorForoshProducts(): Call<List<DataProduct>>
+
+        @GET("webservice/getDataNewProductCategoryId.json")
+        fun getDataNewProductCategoryId(@Query("id") id: Int): Call<List<DataProduct>>
+
+        @GET("webservice/getDataPorforoshProductCategoryId.json")
+        fun getDataPorforoshProductCategoryId(@Query("id") id: Int): Call<List<DataProduct>>
+
 
 
     }

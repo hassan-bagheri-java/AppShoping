@@ -8,6 +8,7 @@ import com.example.myapplication.fragment.Shop_Fragment
 import com.example.myapplication.model.ModelHomeFragment
 import com.example.myapplication.model.ModelMainActivity
 import com.example.myapplication.model.ModelMoreActivity
+import com.example.myapplication.net.ApiService
 import com.example.myapplication.presenter.PresenterHomeFragment
 import com.example.myapplication.utility.PicasoUtility
 import com.squareup.picasso.Picasso
@@ -28,6 +29,7 @@ val modelModules = module {
 
 val apiModules = module {
     single { Picasso.get()}
+    single { ApiService()}
     single { PicasoUtility() }
 }
 

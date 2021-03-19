@@ -36,12 +36,19 @@ class ViewMoreActivity (contextInstance : Context, private val utility: Utility)
         recycleview.layoutManager = GridLayoutManager(context,2,LinearLayoutManager.VERTICAL , false)
     }
 
-    fun setDataRecycler(data : List<DataProduct>){
+    fun getDataRecycleProductMoreActivity(data : List<DataProduct>){
         recycleview.adapter = RecycleItemMoreAdapter(context,data)
+        recycleview.visibility= View.VISIBLE
+        more_progressBar.visibility = View.INVISIBLE
     }
+
 
     fun setTitleText(title:String){
         txtTitle.text = title
+    }
+
+    fun showToast(text : String){
+        context.toast(text)
     }
 
     fun settypeproduct(type : TypeGetProduct){

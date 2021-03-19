@@ -6,14 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.activity.ShowItemCategori
 import com.example.myapplication.dataClass.DataCategoriItem
 import kotlinx.android.synthetic.main.item_recycler_categorie_view.view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class RecycleCategorieAdapter (
     private val context: Context?,
     private val data: List<DataCategoriItem>
 ) : RecyclerView.Adapter<RecycleCategorieAdapter.CategoryViewHolder>(){
+
+    companion object {
+
+        const val KEY_ID = "id"
+        const val KEY_TITLE = "id"
+
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -30,7 +39,7 @@ class RecycleCategorieAdapter (
 
         fun setDAta(data :DataCategoriItem){
             textTitle.text = data.title
-            textTitle.setOnClickListener{context?.toast(data.title)}
+            textTitle.setOnClickListener{context?.startActivity<ShowItemCategori>(KEY_ID to data.id)}
         }
     }
 
