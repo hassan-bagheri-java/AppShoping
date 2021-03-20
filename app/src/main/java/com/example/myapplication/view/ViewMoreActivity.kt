@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.adpter.RecycleItemMoreAdapter
-import com.example.myapplication.adpter.RecycleItemProductAdapter
 import com.example.myapplication.dataClass.DataProduct
 import com.example.myapplication.enum.TypeGetProduct
 import com.example.myapplication.utility.Utility
@@ -29,7 +28,7 @@ class ViewMoreActivity (contextInstance : Context, private val utility: Utility)
         val mainView = inflate(context,R.layout.activity_more,this)
 
 
-        txtTitle = mainView.more_title
+        txtTitle = mainView.show_item_categori_title
         imgBack  = mainView.more_imgBack
         recycleview = mainView.more_recycleview
 

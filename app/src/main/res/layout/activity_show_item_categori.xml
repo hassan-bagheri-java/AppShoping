@@ -1,9 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ShowItemCategori">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/mshow_item_categori_imgBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_arrow_forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/show_item_categori_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                tools:text="تخفیفات داغ"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/mshow_item_categori_imgBack"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ScrollView
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+       <FrameLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:visibility="invisible"
+               android:id="@+id/show_item_categori_root"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <com.example.myapplication.view.CustomView.ProductView
+                   android:id="@+id/show_item_categori_productnew"
+                   android:layout_width="match_parent"
+                   android:layout_height="260dp"
+                   android:layout_marginTop="16dp"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:titleText="جدیدترین ها" />
+
+
+               <androidx.appcompat.widget.AppCompatImageView
+                   android:id="@+id/show_item_categori_banner"
+                   android:layout_width="match_parent"
+                   android:layout_height="200dp"
+                   android:layout_margin="8dp"
+                   android:src="@drawable/banner1"
+                   app:layout_constraintTop_toBottomOf="@+id/show_item_categori_productnew"
+                   tools:layout_editor_absoluteX="-14dp" />
+
+               <com.example.myapplication.view.CustomView.ProductView
+                   android:id="@+id/show_item_categori_porfrosh"
+                   android:layout_width="match_parent"
+                   android:layout_height="250dp"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/show_item_categori_banner"
+                   app:titleText="پر فروش ترین ها">
+
+               </com.example.myapplication.view.CustomView.ProductView>
+
+
+           </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+           <ProgressBar
+               android:id="@+id/show_item_categori_progress"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"/>
+       </FrameLayout>
+
+
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
