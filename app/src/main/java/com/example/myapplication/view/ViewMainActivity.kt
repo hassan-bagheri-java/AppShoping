@@ -10,12 +10,14 @@ import android.widget.PopupMenu
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
+import com.example.myapplication.activity.questionActivity
 import com.example.myapplication.etc.SetFragment
 import com.example.myapplication.model.ModelMainActivity
 import com.example.myapplication.utility.Utility
 import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 @SuppressLint("ViewConstructor")
@@ -84,7 +86,8 @@ class ViewMainActivity(
     override fun onMenuItemClick(item: MenuItem?): Boolean {
     return when(item?.itemId){
         R.id.menu_main_porsesh -> {
-            context.toast("پرسش های متداول")
+//            context.toast("پرسش های متداول")
+            context.startActivity<questionActivity>()
             true
         }
         R.id.menu_main_about -> {
