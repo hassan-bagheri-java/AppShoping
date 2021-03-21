@@ -29,7 +29,7 @@ class ViewMoreActivity (contextInstance : Context, private val utility: Utility)
 
 
         txtTitle = mainView.show_item_categori_title
-        imgBack  = mainView.more_imgBack
+        imgBack  = mainView.question_imgBack
         recycleview = mainView.more_recycleview
 
         recycleview.layoutManager = GridLayoutManager(context,2,LinearLayoutManager.VERTICAL , false)

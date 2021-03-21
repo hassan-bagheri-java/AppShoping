@@ -3,6 +3,7 @@ package com.example.myapplication.net
 import com.example.myapplication.dataClass.DataCategoriItem
 import com.example.myapplication.dataClass.DataImgBannerUrl
 import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.dataClass.DataQuestion
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
@@ -33,6 +34,9 @@ class ApiService {
 
         @GET("webservice/getDataPorforoshProductCategoryId.json")
         fun getDataPorforoshProductCategoryId(@Query("id") id: Int): Call<List<DataProduct>>
+
+        @GET("webservice/DataQuestion.json")
+        fun getDataqestion() : Call<List<DataQuestion>>
 
 
 

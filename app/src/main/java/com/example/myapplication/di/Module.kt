@@ -8,6 +8,7 @@ import com.example.myapplication.fragment.Shop_Fragment
 import com.example.myapplication.model.ModelHomeFragment
 import com.example.myapplication.model.ModelMainActivity
 import com.example.myapplication.model.ModelMoreActivity
+import com.example.myapplication.model.ModelQuestionActivity
 import com.example.myapplication.net.ApiService
 import com.example.myapplication.presenter.PresenterHomeFragment
 import com.example.myapplication.utility.PicasoUtility
@@ -24,6 +25,7 @@ val fragmentModules = module {
 val modelModules = module {
     single { ModelMainActivity() }
     single { ModelHomeFragment() }
+    single { ModelQuestionActivity() }
 
 }
 

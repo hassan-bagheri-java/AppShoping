@@ -1,5 +1,6 @@
 package com.example.myapplication.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
 import android.widget.FrameLayout
@@ -15,7 +16,8 @@ import com.example.myapplication.view.CustomView.ProductView
 import kotlinx.android.synthetic.main.activity_show_item_categori.view.*
 import org.jetbrains.anko.toast
 
-class ViewShowItemCategori (contextinstace: Context , private val utility: Utility) : FrameLayout(contextinstace) {
+@SuppressLint("ViewConstructor")
+class ViewShowItemCategori (contextinstace: Context, private val utility: Utility) : FrameLayout(contextinstace) {
 
     private val root : ConstraintLayout
     private val txtTitle : AppCompatTextView
@@ -28,13 +30,13 @@ class ViewShowItemCategori (contextinstace: Context , private val utility: Utili
 
     init {
         val mainview =  inflate(context, R.layout.activity_show_item_categori, this)
-        root  = show_item_categori_root
-        txtTitle = show_item_categori_title
-        imgback = mshow_item_categori_imgBack
-        imgbanner = show_item_categori_banner
-        newproduct = show_item_categori_productnew
-        progress = show_item_categori_progress
-        porforosh = show_item_categori_porfrosh
+        root  = mainview.show_item_categori_root
+        txtTitle = mainview.show_item_categori_title
+        imgback = mainview.mshow_item_categori_imgBack
+        imgbanner = mainview.show_item_categori_banner
+        newproduct = mainview.show_item_categori_productnew
+        progress = mainview.show_item_categori_progress
+        porforosh = mainview.show_item_categori_porfrosh
     }
 
     fun setTitle( title : String){
@@ -60,7 +62,7 @@ class ViewShowItemCategori (contextinstace: Context , private val utility: Utili
     }
 
     fun hideProgress() {
-        show_item_categori_progress.visibility = View.VISIBLE
+        show_item_categori_progress.visibility = View.INVISIBLE
         show_item_categori_root.visibility = View.VISIBLE
     }
 
