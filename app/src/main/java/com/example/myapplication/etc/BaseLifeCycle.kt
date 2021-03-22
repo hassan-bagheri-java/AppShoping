@@ -7,6 +7,8 @@ interface BaseLifeCycle {
 
     fun ondestroy()
 
+    fun onrefresh(){}
+
     fun onstop(){}
 
     fun onresume(){}

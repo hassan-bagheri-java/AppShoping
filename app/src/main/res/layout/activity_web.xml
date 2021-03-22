@@ -40,7 +40,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/webview_imgBack"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="مرورگر" />
+                android:text="مرورگر" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

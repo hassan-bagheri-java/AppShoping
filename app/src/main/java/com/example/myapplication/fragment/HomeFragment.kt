@@ -12,15 +12,18 @@ import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.activity.WebActivity
 import com.example.myapplication.adpter.RecycleCategorieAdapter
 import com.example.myapplication.dataClass.DataCategoriItem
 import com.example.myapplication.dataClass.DataImgBannerUrl
 import com.example.myapplication.dataClass.DataProduct
 import com.example.myapplication.enum.TypeGetProduct
+import com.example.myapplication.model.ModelWebView
 import com.example.myapplication.presenter.PresenterHomeFragment
 import com.example.myapplication.utility.PicasoUtility
 import kotlinx.android.synthetic.main.activity_more.*
 import kotlinx.android.synthetic.main.fragment_home_.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
 
@@ -49,11 +52,6 @@ class HomeFragment : Fragment() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-       showProgress()
-    }
-
     fun getDataRecycleProduct_new(data : List<DataProduct>){
         home_fragment_recycle_new.initRecycler(data, TypeGetProduct.NEW_PRODUCT) }
 
@@ -77,15 +75,19 @@ class HomeFragment : Fragment() {
         picasso.setimage(data.image2,img_baner2)
 
         img_baner1.setOnClickListener{
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(data.clickimage1)
-            startActivity(intent)
+//            val intent = Intent(Intent.ACTION_VIEW)
+//            intent.data = Uri.parse(data.clickimage1)
+//            startActivity(intent)
+
+            context?.startActivity<WebActivity>(ModelWebView.KEY_URL to data.clickimage1)
+
         }
 
         img_baner2.setOnClickListener{
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(data.clickimage2)
-            startActivity(intent)
+//            val intent = Intent(Intent.ACTION_VIEW)
+//            intent.data = Uri.parse(data.clickimage2)
+//            startActivity(intent)
+            context?.startActivity<WebActivity>(ModelWebView.KEY_URL to data.clickimage2)
         }
     }
 

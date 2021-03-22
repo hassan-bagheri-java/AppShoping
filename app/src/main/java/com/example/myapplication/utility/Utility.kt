@@ -6,5 +6,7 @@ interface Utility {
 
     fun onfinished(){}
 
+    fun onRefresh(){}
+
     fun menuup(view :View){}
 }

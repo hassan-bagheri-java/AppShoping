@@ -14,7 +14,7 @@ class PresenterAboutMeActivity (
 
 
     private fun onClickhandler(){
-        view.onClickhandler()
+        view.onClickhandler(model.getSiteAddress(), model.getTelegramUrl() , model.getInstagramUrl())
     }
 
     override fun ondestroy() {

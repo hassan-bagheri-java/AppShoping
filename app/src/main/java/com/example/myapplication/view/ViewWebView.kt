@@ -44,6 +44,11 @@ class ViewWebView(contextInstance : Context,
         webView.loadUrl(url)
     }
 
+    fun loadUrl(url :String){
+        webView.loadUrl(url)
+    }
+
+
     fun showSnackBar(title: String) {
 
         val snack = Snackbar.make(
@@ -52,9 +57,11 @@ class ViewWebView(contextInstance : Context,
             Snackbar.LENGTH_INDEFINITE
         )
         snack.setActionTextColor(Color.CYAN)
-        snack.setAction("تلاش مجدد"){ snack.dismiss() }
+        snack.setAction("تلاش مجدد"){ snack.dismiss() ; utility.onRefresh()}
         snack.show()
 
     }
+
+
 
 }

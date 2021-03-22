@@ -29,6 +29,10 @@ class WebActivity : AppCompatActivity() , Utility{
         finish()
     }
 
+    override fun onRefresh() {
+        presenter.onrefresh()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         presenter.ondestroy()

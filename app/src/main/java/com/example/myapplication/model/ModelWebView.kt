@@ -14,5 +14,5 @@ class ModelWebView (private val context: Activity){
 
     fun getNetworkState () = NetworkChecker(context).networkState()
 
-    fun getTitleDialog() = " عدم دسترسی به اینترنت"
+    fun getTitleDialog() = "Not Connection !! "
 }
