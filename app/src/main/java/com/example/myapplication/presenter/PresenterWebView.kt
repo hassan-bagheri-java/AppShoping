@@ -7,11 +7,23 @@ import com.example.myapplication.view.ViewWebView
 class PresenterWebView (private val view : ViewWebView,
 private val model : ModelWebView) : BaseLifeCycle {
     override fun oncreate() {
-
+        onclickback()
+        init()
     }
 
     override fun ondestroy() {
 
+    }
+
+    private fun init(){
+        if (model.getNetworkState())
+            view.initWebView(model.getUrlAsIntent()!!)
+        else
+            view.showDialog(model.getTitleDialog())
+    }
+
+    private fun onclickback (){
+        view.onclickback()
     }
 
 }
