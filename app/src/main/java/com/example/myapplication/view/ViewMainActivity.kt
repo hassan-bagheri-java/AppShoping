@@ -10,6 +10,7 @@ import android.widget.PopupMenu
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
+import com.example.myapplication.activity.AboutMeActivity
 import com.example.myapplication.activity.questionActivity
 import com.example.myapplication.etc.SetFragment
 import com.example.myapplication.model.ModelMainActivity
@@ -91,7 +92,8 @@ class ViewMainActivity(
             true
         }
         R.id.menu_main_about -> {
-            context.toast("درباره ما")
+//            context.toast("درباره ما")
+            context.startActivity<AboutMeActivity>()
             true
         }
         R.id.menu_main_call -> {context.toast("تماس باما")

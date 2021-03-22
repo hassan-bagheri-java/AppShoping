@@ -15,9 +15,11 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activity.questionActivity"></activity>
+        <activity android:name=".activity.WebActivity"></activity>
+        <activity android:name=".activity.questionActivity" />
         <activity android:name=".activity.ShowItemCategori" />
         <activity android:name=".activity.MoreActivity" />
+        <activity android:name=".activity.AboutMeActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
