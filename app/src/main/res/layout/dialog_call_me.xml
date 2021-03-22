@@ -15,7 +15,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_call_me"
-        android:text="@string/callMe"
+        android:text="تماس با ما"
         android:textSize="18sp"
         android:textColor="@color/colorWhite"
         android:layout_marginTop="16dp"
