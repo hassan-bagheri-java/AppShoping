@@ -38,8 +38,11 @@ class ApiService {
         @GET("webservice/DataQuestion.json")
         fun getDataqestion() : Call<List<DataQuestion>>
 
-
-
+        @GET("json/failurReport.php")
+        fun sendFailureReport(
+            @Query("subject") subject : String,
+            @Query("text") text : String
+        ) : Call<Boolean>
     }
 
     fun getAPi() : DataApi =

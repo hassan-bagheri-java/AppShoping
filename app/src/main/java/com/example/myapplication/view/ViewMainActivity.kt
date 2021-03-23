@@ -14,18 +14,25 @@ import android.widget.PopupMenu
 import androidx.appcompat.widget.AlertDialogLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.activity.AboutMeActivity
 import com.example.myapplication.activity.questionActivity
 import com.example.myapplication.etc.SetFragment
 import com.example.myapplication.model.ModelMainActivity
+import com.example.myapplication.net.ApiService
 import com.example.myapplication.utility.Utility
 import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.dialog_call_me.view.*
+import kotlinx.android.synthetic.main.dialog_failure_report.view.*
+import org.jetbrains.anko.longToast
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @SuppressLint("ViewConstructor")
 class ViewMainActivity(
@@ -89,6 +96,7 @@ class ViewMainActivity(
     }
 
 
+    @SuppressLint("InflateParams")
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             R.id.menu_main_porsesh -> {
@@ -121,7 +129,45 @@ class ViewMainActivity(
                 true
             }
             R.id.menu_main_error -> {
-                context.toast("'گزارش خطا")
+//                context.toast("'گزارش خطا")
+                val view =
+                    LayoutInflater.from(context).inflate(R.layout.dialog_failure_report, null )
+
+                AlertDialog.Builder(context , R.style.DialogTheme)
+                    .setView(view)
+                    .setPositiveButton("ارسال"){ dialog, _ ->
+
+                        val subject = view.edt_subject_dialog_failure_report.text.toString()
+                        val text = view.edt_text_dialog_failure_report.text.toString()
+
+                        if (subject.isEmpty() || text.isEmpty())
+                            context.toast("لطفا فیلد ها رو پرکنید ")
+                        else{
+                            ApiService()
+                                .getAPi()
+                                .sendFailureReport(subject,text)
+                                .enqueue(object : Callback<Boolean>{
+                                    override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                                        context.toast("ارسال گزارش با خطا مواجه شد")
+                                    }
+
+                                    override fun onResponse(
+                                        call: Call<Boolean>,
+                                        response: Response<Boolean>
+                                    ) {
+                                        context.toast("با موفقعیت ارسال شد")
+                                    }
+
+                                })
+                        }
+
+                        dialog.dismiss()
+                    }
+                    .setNegativeButton("لغو") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .setCancelable(false)
+                    .show()
                 true
             }
             else -> false
