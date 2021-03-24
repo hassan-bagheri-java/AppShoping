@@ -15,7 +15,7 @@ class ApiService {
 
     interface DataApi {
         @GET("webservice/banner.json")
-        fun getImgeUrlForBanner() : Call<DataImgBannerUrl>
+        fun getImgeUrlForBanner(): Call<DataImgBannerUrl>
 
         @GET("webservice/categorie.json")
         fun setDataRecycleCategory(): Call<List<DataCategoriItem>>
@@ -36,16 +36,25 @@ class ApiService {
         fun getDataPorforoshProductCategoryId(@Query("id") id: Int): Call<List<DataProduct>>
 
         @GET("webservice/DataQuestion.json")
-        fun getDataqestion() : Call<List<DataQuestion>>
+        fun getDataqestion(): Call<List<DataQuestion>>
 
         @GET("json/failurReport.php")
         fun sendFailureReport(
-            @Query("subject") subject : String,
-            @Query("text") text : String
-        ) : Call<Boolean>
+            @Query("subject") subject: String,
+            @Query("text") text: String
+        ): Call<Boolean>
+
+
+        /**
+         * baraye ezafe kardan y mahso b favarit az tarigh webservice
+         */
+        @GET("json/setproductporfroshinFavorite.php")
+        fun setproductporfroshinFavorite(@Query("ic") id: Int): Call<Boolean>
+
+
     }
 
-    fun getAPi() : DataApi =
+    fun getAPi(): DataApi =
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("http://hasanlo.ir/android/shop/")

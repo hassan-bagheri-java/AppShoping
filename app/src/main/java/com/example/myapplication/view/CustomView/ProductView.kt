@@ -50,7 +50,7 @@ class ProductView(context: Context, attrs: AttributeSet) : FrameLayout(context, 
      * inja mimyam maghdar dahi mikonimash
      */
     fun initRecycler(data: List<DataProduct> , type : TypeGetProduct) {
-        recycler.adapter = RecycleItemProductAdapter(context, data)
+        recycler.adapter = RecycleItemProductAdapter(context, data,type)
         texall.setOnClickListener {
             context.startActivity<MoreActivity>(
                 TITTLE_KEY to texatitle.text.toString(),

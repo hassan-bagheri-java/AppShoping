@@ -5,5 +5,19 @@
         <attr name="titleText" format="string"/>
     </declare-styleable>
 
+<!--    <declare-styleable name="CustomTextView">-->
+<!--        <attr name="size" format="float"/>-->
+<!--    </declare-styleable>-->
+
+    <declare-styleable name="CustomTextView">
+
+        <attr name="size" format="float"/>
+
+    </declare-styleable>
+
+
+
+
+
 </resources>
 

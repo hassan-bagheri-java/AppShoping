@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="15dp"
+    android:layout_width="300dp"
+    android:layout_height="200dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_name_recycler_comments"
+            android:textSize="18sp"
+            tools:text="علیرضا احمدی"
+            android:textColor="@color/colorBlack"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.codesgood.views.JustifiedTextView
+            android:id="@+id/txt_comment_recycler_comments"
+            android:layout_below="@+id/txt_name_recycler_comments"
+            android:layout_margin="8dp"
+            android:textDirection="rtl"
+            android:textSize="16sp"
+            tools:text="قیمت محصول خیلی مناسب و کیفیت آن از قیمتش بسیار بهتر میباشد. محصولی مقرون به صرفه بوده و خرید آن به شدت توصیه میشود."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

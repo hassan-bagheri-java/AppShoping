@@ -45,10 +45,10 @@ class RecycleItemMoreAdapter(private val context: Context, private val data: Lis
             picasso.setimage(data.imgAddress, img)
             title.text = data.title
 
-            if (data.takhfif) {
+            if (data.discount) {
                 takhfif.visibility = View.VISIBLE
                 takhfif.setCustomText(data.price)
-                price.text = data.pricetakhfif
+                price.text = data.priceDiscount
             } else {
                 takhfif.visibility = View.INVISIBLE
                 price.text = data.price
