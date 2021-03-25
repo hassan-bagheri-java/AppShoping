@@ -51,6 +51,10 @@ class ApiService {
         @GET("json/setproductporfroshinFavorite.php")
         fun setproductporfroshinFavorite(@Query("ic") id: Int): Call<Boolean>
 
+        @GET("code/show.php")
+        fun getProductById(@Query("id") id: Int): Call<DataProduct>
+
+
 
     }
 
