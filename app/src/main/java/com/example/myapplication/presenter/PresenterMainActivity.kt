@@ -13,6 +13,8 @@ class PresenterMainActivity(
         bottom_nav_setItemOnclick()
     }
 
+
+
     private fun setUpViewButom_nav(){
         view.setUpViewButom_nav(model.setUpViewButom_nav(), model.setmainfragment())
     }

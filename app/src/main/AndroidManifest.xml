@@ -16,19 +16,22 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".activity.DetailActivity"></activity>
-        <activity android:name=".activity.WebActivity" />
-        <activity android:name=".activity.questionActivity" />
-        <activity android:name=".activity.ShowItemCategori" />
-        <activity android:name=".activity.MoreActivity" />
-        <activity android:name=".activity.AboutMeActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.LoginActivity"
+            android:theme="@style/fullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.DetailActivity"></activity>
+        <activity android:name=".activity.WebActivity" />
+        <activity android:name=".activity.questionActivity" />
+        <activity android:name=".activity.ShowItemCategori" />
+        <activity android:name=".activity.MoreActivity" />
+        <activity android:name=".activity.AboutMeActivity" />
+        <activity android:name=".activity.MainActivity"/>
+
     </application>
 
 </manifest>

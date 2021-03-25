@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.activity.AboutMeActivity
+import com.example.myapplication.activity.LoginActivity
 import com.example.myapplication.activity.questionActivity
 import com.example.myapplication.etc.SetFragment
 import com.example.myapplication.model.ModelMainActivity
@@ -49,6 +50,8 @@ class ViewMainActivity(
         bottom_nav = view.bottomNavigationView
         menu = view.main_menu
     }
+
+
 
 
     /**

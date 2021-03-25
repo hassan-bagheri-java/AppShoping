@@ -1,5 +1,6 @@
 package com.example.myapplication.activity
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.myapplication.model.ModelMainActivity
 import com.example.myapplication.presenter.PresenterMainActivity
 import com.example.myapplication.utility.Utility
 import com.example.myapplication.view.ViewMainActivity
+import org.jetbrains.anko.startActivity
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() ,SetFragment  {
@@ -31,6 +33,10 @@ class MainActivity : AppCompatActivity() ,SetFragment  {
         presenter = PresenterMainActivity(view_main, model)
         presenter.oncreate()
     }
+
+
+
+
 
 
     override fun addfragment(fragment: Fragment) {

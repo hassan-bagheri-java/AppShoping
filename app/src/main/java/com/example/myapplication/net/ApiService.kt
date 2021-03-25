@@ -1,15 +1,11 @@
 package com.example.myapplication.net
 
-import com.example.myapplication.dataClass.DataCategoriItem
-import com.example.myapplication.dataClass.DataImgBannerUrl
-import com.example.myapplication.dataClass.DataProduct
-import com.example.myapplication.dataClass.DataQuestion
+import com.example.myapplication.dataClass.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 class ApiService {
 
@@ -55,6 +51,19 @@ class ApiService {
         fun getProductById(@Query("id") id: Int): Call<DataProduct>
 
 
+        @FormUrlEncoded
+        @POST("code/login.php")
+        fun userLogin(
+            @Field("email") email: String,
+            @Field("password") pass: String
+        ): Call<DataLogin>
+
+        @FormUrlEncoded
+        @POST("code/register.php")
+        fun userRegister(
+            @Field("email") email: String,
+            @Field("password") pass: String
+        ): Call<DataLogin>
 
     }
 
