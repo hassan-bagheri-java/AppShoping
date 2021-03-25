@@ -32,6 +32,9 @@ class PresenterDetailActivity (
         model.getProductById(this)
     }
 
+
+
+
     private fun onclickHandler (){
         view.onclickHandler(model.getIdAsIntent())
     }
