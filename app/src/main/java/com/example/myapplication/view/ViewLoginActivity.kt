@@ -11,11 +11,6 @@ import com.example.myapplication.R
 import com.example.myapplication.utility.Utility
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
-import ir.ahmadi.projectshopwordpress.R
-import ir.ahmadi.projectshopwordpress.adapter.ViewPagerAdapter
-import ir.ahmadi.projectshopwordpress.etc.Utility
-import ir.ahmadi.projectshopwordpress.fragment.LoginFragment
-import ir.ahmadi.projectshopwordpress.fragment.RegisterFragment
 import kotlinx.android.synthetic.main.activity_login.view.*
 
 @SuppressLint("ViewConstructor")
@@ -48,19 +43,19 @@ class ViewLoginActivity(
 
     }
 
-    fun setUpTabLayout(
-        adapter: ViewPagerAdapter,
-        login: LoginFragment,
-        register: RegisterFragment
-    ) {
-
-        adapter.addFragment(login, "ورود")
-        adapter.addFragment(register, "ثبت نام")
-
-        viewPager.adapter = adapter
-        tabLayout.setupWithViewPager(viewPager)
-
-    }
+//    fun setUpTabLayout(
+//        adapter: ViewPagerAdapter,
+//        login: LoginFragment,
+//        register: RegisterFragment
+//    ) {
+//
+//        adapter.addFragment(login, "ورود")
+//        adapter.addFragment(register, "ثبت نام")
+//
+//        viewPager.adapter = adapter
+//        tabLayout.setupWithViewPager(viewPager)
+//
+//    }
 
     private fun showSnackBar() {
 

@@ -17,4 +17,8 @@
         android:id="@+id/menu_main_error"
         android:title="@string/error"/>
 
+    <item
+        android:id="@+id/menu_main_exit"
+        android:title="@string/exit"/>
+
 </menu>

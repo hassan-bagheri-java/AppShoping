@@ -23,5 +23,8 @@
     <string name="rules">قوانین را مطالعه کردم و قبول دارم</string>
     <string name="view_rules">قوانین</string>
     <string name="daneshjooyar_shop">فروشگاه حسن باقری</string>
+    <string name="name">username</string>
+    <string name="register">ورود</string>
+    <string name="exit">خروج</string>
 
 </resources>

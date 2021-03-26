@@ -101,7 +101,7 @@ class LoginFragment : Fragment() {
             )
         }
 
-        presenter.onCreate()
+        presenter.oncreate()
 
     }
 
@@ -127,7 +127,7 @@ class LoginFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
 
-        presenter.onDestroy()
+        presenter.ondestroy()
 
     }
 

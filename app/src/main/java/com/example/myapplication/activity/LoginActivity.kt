@@ -24,12 +24,12 @@ class LoginActivity : AppCompatActivity(), Utility {
         setContentView(view)
 
         presenter = PresenterLoginActivity(view, model)
-        presenter.onCreate()
+//        presenter.onCreate()
 
     }
 
     override fun onRefresh() {
-        presenter.onCreate()
+        presenter.oncreate()
     }
 
     private fun checkLogin() {
@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity(), Utility {
     override fun onDestroy() {
         super.onDestroy()
 
-        presenter.onDestroy()
+        presenter.ondestroy()
 
     }
 

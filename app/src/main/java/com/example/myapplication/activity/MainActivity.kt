@@ -15,7 +15,7 @@ import com.example.myapplication.view.ViewMainActivity
 import org.jetbrains.anko.startActivity
 import org.koin.android.ext.android.inject
 
-class MainActivity : AppCompatActivity() ,SetFragment  {
+class MainActivity : AppCompatActivity() ,SetFragment  , Utility{
 
     private val model: ModelMainActivity by inject()
     private lateinit var presenter: PresenterMainActivity
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() ,SetFragment  {
         super.onCreate(savedInstanceState)
 
 
-        val view_main = ViewMainActivity(this,this)
+        val view_main = ViewMainActivity(this,this, this)
         setContentView(view_main)
 
         presenter = PresenterMainActivity(view_main, model)
@@ -35,8 +35,9 @@ class MainActivity : AppCompatActivity() ,SetFragment  {
     }
 
 
-
-
+    override fun onfinished() {
+        finish()
+    }
 
 
     override fun addfragment(fragment: Fragment) {

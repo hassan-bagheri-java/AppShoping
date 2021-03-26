@@ -38,6 +38,7 @@ import retrofit2.Response
 @SuppressLint("ViewConstructor")
 class ViewMainActivity(
     contextInstance: Context,
+    private val utility : Utility,
     private val setFragment: SetFragment
 ) :
     FrameLayout(contextInstance), PopupMenu.OnMenuItemClickListener {
@@ -90,6 +91,22 @@ class ViewMainActivity(
                     setFragment.replacefragment(
                         fragments[ModelMainActivity.key_ShopFragment] ?: Fragment()
                     )
+                    true
+
+                }
+
+                R.id.menu_main_exit ->{
+
+                    val pref = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
+                    val editor = pref.edit()
+                    editor.putBoolean("login", false)
+                    editor.apply()
+
+                    context.startActivity<LoginActivity>()
+                    utility.onfinished()
+
+
+
                     true
 
                 }
