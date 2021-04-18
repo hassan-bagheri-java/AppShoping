@@ -3,7 +3,7 @@
 
 
 <!--    این برای تغییر رنگ دادن منو هستش -->
-    <item android:state_checked="false" android:color="@color/colorGray700"/>
-    <item android:state_checked="true" android:color="@color/colorWhite"/>
+    <item android:state_checked="false" android:color="@color/colorWhite"/>
+    <item android:state_checked="true" android:color="@color/telgramcolortext3"/>
 
 </selector>

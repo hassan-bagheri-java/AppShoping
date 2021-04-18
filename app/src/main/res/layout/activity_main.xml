@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:background="@color/hassan"
+        android:background="@color/telgramcolor"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="-16dp">
@@ -55,7 +55,7 @@
     <View
         android:id="@+id/view3"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="47dp"
         android:background="@drawable/color_barjaste_navigation"
         app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
         app:layout_constraintTop_toTopOf="@+id/bottomNavigationView" />
@@ -64,7 +64,7 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/hassan"
+        android:background="@color/telgramcolor"
         app:itemIconTint="@color/color_select_item_nav"
         app:itemTextColor="@color/color_select_item_nav"
         app:layout_constraintBottom_toBottomOf="parent"

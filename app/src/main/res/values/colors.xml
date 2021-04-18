@@ -28,4 +28,12 @@
     <color name="colorPrimary">@color/colorPrimaryDark</color>
     <color name="colorPrimaryDark">#06143C</color>
     <color name="colorAccent">@color/colorOrange</color>
+
+
+    <!--    telgram color-->
+    <color name="telgramcolor">#17212B</color>
+    <color name="telgramcolortext1">#65717C</color>
+    <color name="telgramcolortext2">#557599</color>
+    <color name="telgramcolortext3">#5DB2F2</color>
+
 </resources>
