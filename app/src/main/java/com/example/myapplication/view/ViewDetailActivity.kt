@@ -91,7 +91,7 @@ class ViewDetailActivity(
 
 
 
-    fun onclickHandler(id :Int) {
+    fun onclickHandler() {
 
         imgback.setOnClickListener {
             utility.onfinished()
@@ -128,9 +128,9 @@ class ViewDetailActivity(
         picassoUtility.setimage(data.imgAddress , imgPreView)
         txtName.text = data.title
         txtDescription.text = data.description
-        ratingBar.rating = data.rate
+        ratingBar.rating = data.rate.toFloat()
 
-        if (data.discount) {
+        if (data.discount == "1") {
 
             txtDiscount.visibility =View.VISIBLE
             txtDiscount.setCustomText(data.price)

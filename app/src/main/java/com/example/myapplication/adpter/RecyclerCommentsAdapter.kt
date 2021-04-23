@@ -3,7 +3,6 @@ package com.example.myapplication.adpter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.dataClass.DataComments
@@ -14,11 +13,11 @@ class RecyclerCommentsAdapter (private val data : List <DataComments>) : Recycle
     inner class CommentsViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView) {
 
         private val txtName = itemView.txt_name_recycler_comments
-        private val txtCommet = itemView.txt_comment_recycler_comments
+        private val txtComment = itemView.txt_comment_recycler_comments
 
         fun setData(data : DataComments) {
 
-            txtCommet.text = data.commet
+            txtComment.text = data.commet
             txtName.text = data.name
         }
     }

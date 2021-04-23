@@ -4,6 +4,7 @@ import android.app.Activity
 import android.util.Log
 import com.example.myapplication.adpter.RecycleCategorieAdapter
 import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.dataClass.DataProductWebservice
 import com.example.myapplication.net.ApiService
 import com.example.myapplication.net.CountryPreesenterListner
 import org.koin.standalone.KoinComponent
@@ -24,25 +25,25 @@ class ModelShowItemCategori (private val activity: Activity) : KoinComponent{
     /***
      * inja behtar bod tori pyade lonim k query zade basha
      */
-    fun getDataNewRecycleProduct (mListner: CountryPreesenterListner<List<DataProduct>>){
+    fun getDataNewRecycleProduct (mListner: CountryPreesenterListner<DataProductWebservice>){
         apiService.getAPi()
             .getDataNewProducts()
-            .enqueue(object : Callback<List<DataProduct>> {
-                override fun onFailure(call: Call<List<DataProduct>>, t: Throwable) {
+            .enqueue(object : Callback<DataProductWebservice> {
+                override fun onFailure(call: Call<DataProductWebservice>, t: Throwable) {
                     Log.e("Hassan", "error in get Data :   ${t.message}")
                     mListner.onFailure("خظایی در دریافت اطلاعات  getDataNewRecycleProduct صورت گرفته است.")
                     Log.e("hassan", "خظایی در دریافت اطلاعات  getDataNewRecycleProduct صورت گرفته است.")
                 }
 
                 override fun onResponse(
-                    call: Call<List<DataProduct>>,
-                    response: Response<List<DataProduct>>
+                    call: Call<DataProductWebservice>,
+                    response: Response<DataProductWebservice>
                 ) {
                     val data = response.body()
                     if (data != null)
                         mListner.onResponse(data)
                     else
-                        Log.e("Hassan", "null data")
+                        Log.e("Hassan", "null55 data")
                 }
 
             })
@@ -75,20 +76,20 @@ class ModelShowItemCategori (private val activity: Activity) : KoinComponent{
     fun getDataPorforoshRecycleProduct (mListner: CountryPreesenterListner<List<DataProduct>>){
         apiService.getAPi()
             .getDataPorForoshProducts()
-            .enqueue(object : Callback<List<DataProduct>> {
-                override fun onFailure(call: Call<List<DataProduct>>, t: Throwable) {
+            .enqueue(object : Callback<DataProductWebservice> {
+                override fun onFailure(call: Call<DataProductWebservice>, t: Throwable) {
                     Log.e("Hassan", "error in get Data :   ${t.message}")
                     mListner.onFailure("خظایی در دریافت اطلاعات  getDataNewRecycleProduct صورت گرفته است.")
                     Log.e("hassan", "خظایی در دریافت اطلاعات  getDataNewRecycleProduct صورت گرفته است.")
                 }
 
                 override fun onResponse(
-                    call: Call<List<DataProduct>>,
-                    response: Response<List<DataProduct>>
+                    call: Call<DataProductWebservice>,
+                    response: Response<DataProductWebservice>
                 ) {
                     val data = response.body()
                     if (data != null)
-                        mListner.onResponse(data)
+                        mListner.onResponse(data.data)
                     else
                         Log.e("Hassan", "null data")
                 }

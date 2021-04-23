@@ -1,6 +1,6 @@
 package com.example.myapplication.presenter
 
-import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.dataClass.DataProductWebservice
 import com.example.myapplication.etc.BaseLifeCycle
 import com.example.myapplication.model.ModelDetailActivity
 import com.example.myapplication.net.CountryPreesenterListner
@@ -9,7 +9,7 @@ import com.example.myapplication.view.ViewDetailActivity
 class PresenterDetailActivity (
     private val view :ViewDetailActivity,
     private val model : ModelDetailActivity
-) : BaseLifeCycle , CountryPreesenterListner<DataProduct> {
+) : BaseLifeCycle , CountryPreesenterListner<DataProductWebservice> {
 
     override fun oncreate() {
         onclickHandler()
@@ -36,7 +36,7 @@ class PresenterDetailActivity (
 
 
     private fun onclickHandler (){
-        view.onclickHandler(model.getIdAsIntent())
+        view.onclickHandler()
     }
 
     private fun settitle(){
@@ -47,9 +47,9 @@ class PresenterDetailActivity (
 
     }
 
-    override fun onResponse(data: DataProduct) {
-        view.showToast("111111")
-        view.setUpViews(data)
+    override fun onResponse(data: DataProductWebservice) {
+        view.showToast(data.data[0].id)
+        view.setUpViews(data.data[0])
         view.hideProgress()
     }
 

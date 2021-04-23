@@ -26,5 +26,8 @@
     <string name="name">username</string>
     <string name="register">ورود</string>
     <string name="exit">خروج</string>
+    <string name="comments">نظرات کاربران :</string>
+    <string name="price2">قیمت :</string>
+    <string name="discount">تخفیفات داغ</string>
 
 </resources>

@@ -3,6 +3,7 @@ package com.example.myapplication.presenter
 import com.example.myapplication.dataClass.DataCategoriItem
 import com.example.myapplication.dataClass.DataImgBannerUrl
 import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.dataClass.DataProductWebservice
 import com.example.myapplication.etc.BaseLifeCycle
 import com.example.myapplication.fragment.HomeFragment
 import com.example.myapplication.model.ModelHomeFragment
@@ -59,9 +60,10 @@ class PresenterHomeFragment(
 
 
     private fun setDataRecyclers(){
-        model.getDataNewRecycleProduct(object : CountryPreesenterListner<List<DataProduct>>{
-            override fun onResponse(data: List<DataProduct>) {
-                view.getDataRecycleProduct_new(data)
+        model.getDataNewRecycleProduct(object : CountryPreesenterListner<DataProductWebservice>{
+            override fun onResponse(data: DataProductWebservice) {
+
+                view.getDataRecycleProduct_new(data.data)
             }
 
             override fun onFailure(error: String) {
@@ -71,9 +73,9 @@ class PresenterHomeFragment(
         })
 
 
-        model.getDataTakfifProducts(object : CountryPreesenterListner<List<DataProduct>>{
-            override fun onResponse(data: List<DataProduct>) {
-                view.getDataRecycleProduct__takhfif(data)
+        model.getDataTakfifProducts(object : CountryPreesenterListner<DataProductWebservice>{
+            override fun onResponse(data: DataProductWebservice) {
+                view.getDataRecycleProduct__takhfif(data.data)
             }
 
             override fun onFailure(error: String) {
@@ -82,9 +84,9 @@ class PresenterHomeFragment(
 
         })
 
-        model.getDataPorForoshProducts(object : CountryPreesenterListner<List<DataProduct>>{
-            override fun onResponse(data: List<DataProduct>) {
-                view.getDataRecycleProduct_porforosh(data)
+        model.getDataPorForoshProducts(object : CountryPreesenterListner<DataProductWebservice>{
+            override fun onResponse(data: DataProductWebservice) {
+                view.getDataRecycleProduct_porforosh(data.data)
             }
 
             override fun onFailure(error: String) {

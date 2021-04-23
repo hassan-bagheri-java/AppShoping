@@ -1,6 +1,7 @@
 package com.example.myapplication.presenter
 
 import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.dataClass.DataProductWebservice
 import com.example.myapplication.etc.BaseLifeCycle
 import com.example.myapplication.model.ModelShowItemCategori
 import com.example.myapplication.net.CountryPreesenterListner
@@ -25,9 +26,9 @@ class presenterShowItemCategori (
 
     private fun setdataRecyclers() {
 
-        model.getDataNewRecycleProduct(object :CountryPreesenterListner<List<DataProduct>>{
-            override fun onResponse(data: List<DataProduct>) {
-                view.SetDataNewProduct(data)
+        model.getDataNewRecycleProduct(object :CountryPreesenterListner<DataProductWebservice>{
+            override fun onResponse(data: DataProductWebservice) {
+                view.SetDataNewProduct(data.data)
             }
 
             override fun onFailure(error: String) {

@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.myapplication.dataClass.DataCategoriItem
 import com.example.myapplication.dataClass.DataImgBannerUrl
 import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.dataClass.DataProductWebservice
 import com.example.myapplication.net.ApiService
 import com.example.myapplication.net.CountryPreesenterListner
 import com.example.myapplication.test.DataTest
@@ -18,43 +19,45 @@ class ModelHomeFragment {
 //    inja data dasti gerfta shod
 //    fun getDataNewProducts() = DataTest.getDataRecycleProduct()
 
-    fun getDataNewRecycleProduct (mListner: CountryPreesenterListner<List<DataProduct>>){
+    fun getDataNewRecycleProduct (mListner: CountryPreesenterListner<DataProductWebservice>){
         apiService.getAPi()
             .getDataNewProducts()
-            .enqueue(object : Callback<List<DataProduct>>{
-                override fun onFailure(call: Call<List<DataProduct>>, t: Throwable) {
+            .enqueue(object : Callback<DataProductWebservice>{
+                override fun onFailure(call: Call<DataProductWebservice>, t: Throwable) {
                     Log.e("Hassan", "error in get Data :   ${t.message}")
                     mListner.onFailure("خظایی در دریافت اطلاعات  getDataNewRecycleProduct صورت گرفته است.")
                     Log.e("hassan", "خظایی در دریافت اطلاعات  getDataNewRecycleProduct صورت گرفته است.")
                 }
 
                 override fun onResponse(
-                    call: Call<List<DataProduct>>,
-                    response: Response<List<DataProduct>>
+                    call: Call<DataProductWebservice>,
+                    response: Response<DataProductWebservice>
                 ) {
                     val data = response.body()
                     if (data != null)
                         mListner.onResponse(data)
                     else
-                        Log.e("Hassan", "null data")
+                        Log.e("Hassan", "null data777")
+                        Log.e("Hassan", "${response}")
+
                 }
 
             })
     }
 
-    fun getDataTakfifProducts (mListner: CountryPreesenterListner<List<DataProduct>>){
+    fun getDataTakfifProducts (mListner: CountryPreesenterListner<DataProductWebservice>){
         apiService.getAPi()
             .getDataTakfifProducts()
-            .enqueue(object : Callback<List<DataProduct>>{
-                override fun onFailure(call: Call<List<DataProduct>>, t: Throwable) {
+            .enqueue(object : Callback<DataProductWebservice>{
+                override fun onFailure(call: Call<DataProductWebservice>, t: Throwable) {
                     Log.e("Hassan", "error in get Data :   ${t.message}")
                     mListner.onFailure("خظایی در دریافت اطلاعات  getDataNewRecycleProduct صورت گرفته است.")
                     Log.e("hassan", "خظایی در دریافت اطلاعات  getDataNewRecycleProduct صورت گرفته است.")
                 }
 
                 override fun onResponse(
-                    call: Call<List<DataProduct>>,
-                    response: Response<List<DataProduct>>
+                    call: Call<DataProductWebservice>,
+                    response: Response<DataProductWebservice>
                 ) {
                     val data = response.body()
                     if (data != null)
@@ -66,19 +69,19 @@ class ModelHomeFragment {
             })
     }
 
-    fun getDataPorForoshProducts (mListner: CountryPreesenterListner<List<DataProduct>>){
+    fun getDataPorForoshProducts (mListner: CountryPreesenterListner<DataProductWebservice>){
         apiService.getAPi()
             .getDataPorForoshProducts()
-            .enqueue(object : Callback<List<DataProduct>>{
-                override fun onFailure(call: Call<List<DataProduct>>, t: Throwable) {
+            .enqueue(object : Callback<DataProductWebservice>{
+                override fun onFailure(call: Call<DataProductWebservice>, t: Throwable) {
                     Log.e("Hassan", "error in get Data :   ${t.message}")
                     mListner.onFailure("خظایی در دریافت اطلاعات  getDataNewRecycleProduct صورت گرفته است.")
                     Log.e("hassan", "خظایی در دریافت اطلاعات  getDataNewRecycleProduct صورت گرفته است.")
                 }
 
                 override fun onResponse(
-                    call: Call<List<DataProduct>>,
-                    response: Response<List<DataProduct>>
+                    call: Call<DataProductWebservice>,
+                    response: Response<DataProductWebservice>
                 ) {
                     val data = response.body()
                     if (data != null)

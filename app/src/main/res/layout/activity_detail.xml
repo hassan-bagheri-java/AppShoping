@@ -13,11 +13,12 @@
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView_detail"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/question_imgBack_detail"
@@ -35,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="تخفیفات داغ"
+                android:text="@string/discount"
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -68,25 +69,25 @@
 
     <ScrollView
         android:id="@+id/scrollView_detail"
-        android:visibility="invisible"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout_detail">
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout_detail">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_preview_detail_activity"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:scaleType="fitXY"
                 android:layout_margin="8dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="8dp"
                 tools:src="@drawable/banner1" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -138,10 +139,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
-                    tools:text="30000"
                     android:textColor="@color/colorDarkRed"
                     android:visibility="gone"
-                    app:size="20" />
+                    app:size="20"
+                    tools:text="30000" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/appCompatTextView3"
@@ -150,22 +151,20 @@
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:paddingLeft="5dp"
-                    tools:text="20000"
                     android:textColor="@color/colorGreen"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2"
-                    tools:ignore="RtlHardcoded" />
-
-
+                    tools:ignore="RtlHardcoded,RtlSymmetry"
+                    tools:text="20000" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="  قیمت : "
+                    android:text="@string/price2"
                     android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
 
             </LinearLayout>
@@ -187,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_marginEnd="12dp"
-                android:text="نظرات کاربران :"
+                android:text="@string/comments"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -207,18 +206,21 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/detail_btn"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="52dp"
                 android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/back_ground_forbuttom_buy"
                 android:gravity="center"
                 android:text="@string/buy"
                 android:textColor="@color/white"
                 android:textSize="22sp"
-                tools:layout_editor_absoluteX="8dp"
-                app:layout_constraintTop_toBottomOf="@id/recyclerView2"
-                tools:layout_editor_absoluteY="88dp" />
-
-
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recyclerView2" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

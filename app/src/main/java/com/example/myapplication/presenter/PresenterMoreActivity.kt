@@ -1,6 +1,7 @@
 package com.example.myapplication.presenter
 
 import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.dataClass.DataProductWebservice
 import com.example.myapplication.enum.TypeGetProduct
 import com.example.myapplication.etc.BaseLifeCycle
 import com.example.myapplication.model.ModelMoreActivity
@@ -37,9 +38,9 @@ class PresenterMoreActivity(
         when (model.settypeproduct()) {
             TypeGetProduct.NEW_PRODUCT -> {
                 model.getDataNewRecycleProduct(object :
-                    CountryPreesenterListner<List<DataProduct>> {
-                    override fun onResponse(data: List<DataProduct>) {
-                        view.getDataRecycleProductMoreActivity(data)
+                    CountryPreesenterListner<DataProductWebservice> {
+                    override fun onResponse(data: DataProductWebservice) {
+                        view.getDataRecycleProductMoreActivity(data.data)
                     }
 
                     override fun onFailure(error: String) {
@@ -51,9 +52,9 @@ class PresenterMoreActivity(
 
             TypeGetProduct.TAKHFIF_PRODUCT -> {
                 model.getDataTakfifProducts(object :
-                    CountryPreesenterListner<List<DataProduct>> {
-                    override fun onResponse(data: List<DataProduct>) {
-                        view.getDataRecycleProductMoreActivity(data)
+                    CountryPreesenterListner<DataProductWebservice> {
+                    override fun onResponse(data: DataProductWebservice) {
+                        view.getDataRecycleProductMoreActivity(data.data)
                     }
 
                     override fun onFailure(error: String) {
@@ -64,9 +65,9 @@ class PresenterMoreActivity(
             }
             TypeGetProduct.PORFOROSH_PRODUCT -> {
                 model.getDataPorForoshProducts(object :
-                    CountryPreesenterListner<List<DataProduct>> {
-                    override fun onResponse(data: List<DataProduct>) {
-                        view.getDataRecycleProductMoreActivity(data)
+                    CountryPreesenterListner<DataProductWebservice> {
+                    override fun onResponse(data: DataProductWebservice) {
+                        view.getDataRecycleProductMoreActivity(data.data)
                     }
 
                     override fun onFailure(error: String) {

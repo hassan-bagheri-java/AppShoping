@@ -58,7 +58,7 @@ class RecycleItemProductAdapter(
             picasso.setimage(data.imgAddress, img)
             title.text = data.title
 
-            if (data.discount) {
+            if (data.discount == "1") {
                 takhfif_price.visibility = View.VISIBLE
                 takhfif_price.setCustomText(data.price)
                 price.text = data.priceDiscount

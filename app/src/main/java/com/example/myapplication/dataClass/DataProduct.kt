@@ -1,12 +1,13 @@
 package com.example.myapplication.dataClass
 
 data class DataProduct (
-    val id : Int,
-    val title : String,
-    val imgAddress : String,
-    val price : String,
-    val discount: Boolean,
-    val priceDiscount    : String,
-    val rate: Float,
-    val description: String
+    val description: String,
+    val discount: String,
+    val id: String,
+    val imgAddress: String,
+    val price: String,
+    val priceDiscount: String,
+    val rate: String,
+    val title: String,
+    val type: String
 )
