@@ -60,7 +60,7 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/back_txt_login"
         android:gravity="center"
-        android:text="@string/register"
+        android:text="ثبت نام"
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

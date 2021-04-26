@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.appcompat.widget.AlertDialogLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
@@ -188,6 +189,15 @@ class ViewMainActivity(
                     }
                     .setCancelable(false)
                     .show()
+                true
+            }
+            R.id.menu_main_exit -> {
+                val pref = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
+               val editor = pref.edit()
+                editor.putBoolean("login", false)
+                editor.apply()
+                context.startActivity<LoginActivity>()
+                utility.onfinished()
                 true
             }
             else -> false

@@ -46,7 +46,7 @@ class ApiService {
         @GET("json/setproductporfroshinFavorite.php")
         fun setproductporfroshinFavorite(@Query("ic") id: Int): Call<Boolean>
 
-        @GET("http://hasanlo.ir/android/shop/webservice/project/ws_tb.php")
+        @GET("webservice/project/ws_tb.php")
         fun getProductById(
             @Query("type") type: String,
             @Query("table") table: String,
@@ -56,18 +56,18 @@ class ApiService {
 
 
         @FormUrlEncoded
-        @POST("code/login.php")
+        @POST("webservice/project/ws_tb.php")
         fun userLogin(
-            @Field("email") email: String,
-            @Field("password") pass: String
-        ): Call<DataLogin>
+            @Field("type") type: String,
+            @Field("query") query: String
+        ): Call<DataLoginWebservice>
 
         @FormUrlEncoded
-        @POST("code/register.php")
+        @POST("webservice/project/ws_tb.php")
         fun userRegister(
-            @Field("email") email: String,
-            @Field("password") pass: String
-        ): Call<DataLogin>
+            @Field("type") type: String,
+            @Field("query") query: String
+        ): Call<DataRegiser>
 
     }
 

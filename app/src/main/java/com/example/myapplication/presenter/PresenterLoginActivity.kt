@@ -20,7 +20,7 @@ class PresenterLoginActivity(
     }
 
     private fun setUpTabLayout() {
-//        view.setUpTabLayout(model.getAdapter(), model.getObjectLogin(), model.getObjectRegister())
+        view.setUpTabLayout(model.getAdapter(), model.getObjectLogin(), model.getObjectRegister())
     }
 
 

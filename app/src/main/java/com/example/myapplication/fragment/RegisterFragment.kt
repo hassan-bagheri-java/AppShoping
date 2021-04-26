@@ -7,16 +7,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.appcompat.widget.AppCompatTextView
 import com.example.myapplication.R
 import com.example.myapplication.activity.MainActivity
 import com.example.myapplication.activity.WebActivity
 import com.example.myapplication.dataClass.DataLoginWebservice
+import com.example.myapplication.dataClass.DataRegiser
 import com.example.myapplication.model.ModelWebView
 import com.example.myapplication.net.ApiService
 import com.example.myapplication.presenter.PresenterLoginFragment
+import com.example.myapplication.presenter.PresenterRegisterFragment
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_register.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
 import org.koin.android.ext.android.inject
@@ -24,51 +27,66 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginFragment : Fragment() {
+class RegisterFragment : Fragment() {
 
-    private val presenter: PresenterLoginFragment by inject()
+    private val presenter: PresenterRegisterFragment by inject()
     private lateinit var email : String
     private lateinit var password : String
-    private lateinit var txtLogin : AppCompatTextView
+    private lateinit var txtRegister : AppCompatTextView
+    private lateinit var txtRules : AppCompatTextView
+    private lateinit var checkBox : AppCompatCheckBox
+
+
+    init {
+
+    }
+
+
     private val apiService: ApiService by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        email = edt_email_login_fragment.text.toString()
-        password = edt_password_login_fragment.text.toString()
-        txtLogin = txt_login_fragment
+        email = edt_email_register_fragment.text.toString()
+        password = edt_password_register_fragment.text.toString()
+        txtRegister = txt_register_fragment
+        txtRules = txt_view_rules_register_fragment
+        checkBox = checkBox_register_fragment
 
-        txtLogin.setOnClickListener {
+
+
+
+        txtRegister.setOnClickListener {
 
             if (testRight()) {
 
                 progressBar_login_fragment.visibility = View.VISIBLE
 
-                val query = "CALL check_login('${email}','${password}')"
+                val query = "CALL login('${email}','${password}')"
 
                 apiService.getAPi()
-                    .userLogin(
-                        "select","${query}"
+                    .userRegister(
+                        "insert","${query}"
 
                     )
-                    .enqueue(object : Callback<DataLoginWebservice> {
+                    .enqueue(object : Callback<DataRegiser> {
 
-                        override fun onFailure(call: Call<DataLoginWebservice>, t: Throwable) {
+                        override fun onFailure(call: Call<DataRegiser>, t: Throwable) {
                             toast("خطای اتصال به اینترنت")
                             progressBar_login_fragment.visibility = View.INVISIBLE
                         }
 
                         override fun onResponse(
-                            call: Call<DataLoginWebservice>,
-                            response: Response<DataLoginWebservice>
+                            call: Call<DataRegiser>,
+                            response: Response<DataRegiser>
                         ) {
 
                             progressBar_login_fragment.visibility = View.INVISIBLE
@@ -77,7 +95,7 @@ class LoginFragment : Fragment() {
 
                             if (data != null) {
 
-                                if (data.data[0].Result == "1") {
+                                if (data.status == 200) {
 
                                     val pref =
                                         activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
@@ -106,7 +124,7 @@ class LoginFragment : Fragment() {
 
         }
 
-        txt_view_rules_login_fragment.setOnClickListener {
+        txtRules.setOnClickListener {
             startActivity<WebActivity>(
                 ModelWebView.KEY_URL to "https://www.webroidlearning.ir"
             )
@@ -118,12 +136,16 @@ class LoginFragment : Fragment() {
 
     private fun testRight(): Boolean {
 
-        val checkBox = checkBox_login_fragment.isChecked
+        val checkBox = checkBox.isChecked
+        email = edt_email_register_fragment.text.toString()
+        password = edt_password_register_fragment.text.toString()
 
-        return if (edt_email_login_fragment.text.toString()
-                .isEmpty() || edt_password_login_fragment.text.toString().isEmpty()
+
+        return if (email.isEmpty() || password.isEmpty()
         ) {
-            toast("لطفا ایمیل و نام کاربری خود را وارد کنید")
+
+            toast("${email}")
+//            toast("لطفا ایمیل و نام کاربری خود را وارد کنید555")
             false
         } else
             if (checkBox)

@@ -22,7 +22,7 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout_login_activity"
         android:layout_width="320dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="32dp"
         android:background="@color/colorWhite"
@@ -47,7 +47,7 @@
         android:layout_width="320dp"
         android:layout_height="350dp"
         android:background="@color/colorGray100"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

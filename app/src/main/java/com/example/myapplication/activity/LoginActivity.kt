@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity(), Utility {
         setContentView(view)
 
         presenter = PresenterLoginActivity(view, model)
-//        presenter.onCreate()
+        presenter.oncreate()
 
     }
 
