@@ -68,7 +68,6 @@ class RegisterFragment : Fragment() {
 
             if (testRight()) {
 
-                progressBar_login_fragment.visibility = View.VISIBLE
 
                 val query = "CALL login('${email}','${password}')"
 
@@ -81,7 +80,7 @@ class RegisterFragment : Fragment() {
 
                         override fun onFailure(call: Call<DataRegiser>, t: Throwable) {
                             toast("خطای اتصال به اینترنت")
-                            progressBar_login_fragment.visibility = View.INVISIBLE
+//                            progressBar_login_fragment.visibility = View.INVISIBLE
                         }
 
                         override fun onResponse(
@@ -89,7 +88,7 @@ class RegisterFragment : Fragment() {
                             response: Response<DataRegiser>
                         ) {
 
-                            progressBar_login_fragment.visibility = View.INVISIBLE
+//                            progressBar_login_fragment.visibility = View.INVISIBLE
 
                             val data = response.body()
 
@@ -103,16 +102,16 @@ class RegisterFragment : Fragment() {
                                     editor?.putBoolean("login", true)
                                     editor?.putString(
                                         "email",
-                                        edt_email_login_fragment.text.toString()
+                                        email
                                     )
                                     editor?.apply()
 
-                                    toast(data.msg)
+                                    toast("ثبت نام با موقعیت انجام شد")
 
                                     startActivity<MainActivity>()
 
                                 } else
-                                    toast(data.msg)
+                                    toast("نام کاربری یا پسور قبلا ثبت شده است")
 
                             }
 
@@ -144,8 +143,7 @@ class RegisterFragment : Fragment() {
         return if (email.isEmpty() || password.isEmpty()
         ) {
 
-            toast("${email}")
-//            toast("لطفا ایمیل و نام کاربری خود را وارد کنید555")
+            toast("لطفا ایمیل و نام کاربری خود را وارد ")
             false
         } else
             if (checkBox)

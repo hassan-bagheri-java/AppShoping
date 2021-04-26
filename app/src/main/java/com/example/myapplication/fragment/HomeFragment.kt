@@ -21,6 +21,7 @@ import com.example.myapplication.enum.TypeGetProduct
 import com.example.myapplication.model.ModelWebView
 import com.example.myapplication.presenter.PresenterHomeFragment
 import com.example.myapplication.utility.PicasoUtility
+import com.example.myapplication.view.CustomView.ProductView
 import kotlinx.android.synthetic.main.activity_more.*
 import kotlinx.android.synthetic.main.fragment_home_.*
 import org.jetbrains.anko.startActivity
@@ -29,11 +30,14 @@ import org.koin.android.ext.android.inject
 
 class HomeFragment : Fragment() {
 
-    private val presenter : PresenterHomeFragment by inject()
-    private val picasso : PicasoUtility by inject()
-    private lateinit var img_baner1:AppCompatImageView
-    private lateinit var recycle_categori:RecyclerView
-    private lateinit var img_baner2:AppCompatImageView
+    private val presenter: PresenterHomeFragment by inject()
+    private val picasso: PicasoUtility by inject()
+    private lateinit var img_baner1: AppCompatImageView
+    private lateinit var recycle_categori: RecyclerView
+    private lateinit var recycle_takhfif: ProductView
+    private lateinit var recycle_porforosh: ProductView
+    private lateinit var recycle_new: ProductView
+    private lateinit var img_baner2: AppCompatImageView
 
 
     override fun onCreateView(
@@ -48,33 +52,38 @@ class HomeFragment : Fragment() {
         img_baner1 = home_fragment_banner1
         img_baner2 = home_fragment_banner2
         recycle_categori = home_Fragment_recycle_categori
+        recycle_takhfif = home_fragment_recycle_takhfif
+        recycle_porforosh = home_fragment_recycle_porforosh
+        recycle_new = home_fragment_recycle_new
         presenter.oncreate()
 
     }
 
-    fun getDataRecycleProduct_new(data : List<DataProduct>){
-        home_fragment_recycle_new.initRecycler(data, TypeGetProduct.NEW_PRODUCT) }
+    fun getDataRecycleProduct_new(data: List<DataProduct>) {
+        recycle_new.initRecycler(data, TypeGetProduct.NEW_PRODUCT)
+    }
 
-    fun getDataRecycleProduct__takhfif(data : List<DataProduct>){
-        home_fragment_recycle_takhfif.initRecycler(data,TypeGetProduct.TAKHFIF_PRODUCT) }
+    fun getDataRecycleProduct__takhfif(data: List<DataProduct>) {
+        recycle_takhfif.initRecycler(data, TypeGetProduct.TAKHFIF_PRODUCT)
+    }
 
-    fun getDataRecycleProduct_porforosh(data : List<DataProduct>){
-        home_fragment_recycle_porforosh.initRecycler(data, TypeGetProduct.PORFOROSH_PRODUCT)
+    fun getDataRecycleProduct_porforosh(data: List<DataProduct>) {
+        recycle_porforosh.initRecycler(data, TypeGetProduct.PORFOROSH_PRODUCT)
         hideProgress()
     }
 
 
-    fun setDataRecycleCategory(data :List<DataCategoriItem>){
+    fun setDataRecycleCategory(data: List<DataCategoriItem>) {
         recycle_categori.layoutManager =
-            LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,true)
-        recycle_categori.adapter = RecycleCategorieAdapter(context,data)
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true)
+        recycle_categori.adapter = RecycleCategorieAdapter(context, data)
     }
 
-    fun setImageInBannerr(data : DataImgBannerUrl){
-        picasso.setimage(data.image1,img_baner1)
-        picasso.setimage(data.image2,img_baner2)
+    fun setImageInBannerr(data: DataImgBannerUrl) {
+        picasso.setimage(data.image1, img_baner1)
+        picasso.setimage(data.image2, img_baner2)
 
-        img_baner1.setOnClickListener{
+        img_baner1.setOnClickListener {
 //            val intent = Intent(Intent.ACTION_VIEW)
 //            intent.data = Uri.parse(data.clickimage1)
 //            startActivity(intent)
@@ -83,7 +92,7 @@ class HomeFragment : Fragment() {
 
         }
 
-        img_baner2.setOnClickListener{
+        img_baner2.setOnClickListener {
 //            val intent = Intent(Intent.ACTION_VIEW)
 //            intent.data = Uri.parse(data.clickimage2)
 //            startActivity(intent)
@@ -91,21 +100,19 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun showToast(text: String){
+    fun showToast(text: String) {
         context?.toast(text)
     }
 
-    private fun showProgress(){
+    private fun showProgress() {
         home_Fragment_progeresbar.visibility = View.VISIBLE
         home_frament_root.visibility = View.INVISIBLE
     }
 
-    private  fun hideProgress(){
+    private fun hideProgress() {
         home_Fragment_progeresbar.visibility = View.INVISIBLE
         home_frament_root.visibility = View.VISIBLE
     }
-
-
 
 
     override fun onDestroy() {

@@ -1,5 +1,7 @@
 package com.example.myapplication.presenter
 
+import android.util.Log
+import android.widget.Toast
 import com.example.myapplication.etc.BaseLifeCycle
 import com.example.myapplication.model.ModelLoginActivity
 import com.example.myapplication.view.ViewLoginActivity

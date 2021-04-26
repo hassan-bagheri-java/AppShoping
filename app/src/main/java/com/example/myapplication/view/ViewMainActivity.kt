@@ -96,21 +96,7 @@ class ViewMainActivity(
 
                 }
 
-                R.id.menu_main_exit ->{
 
-                    val pref = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
-                    val editor = pref.edit()
-                    editor.putBoolean("login", false)
-                    editor.apply()
-
-                    context.startActivity<LoginActivity>()
-                    utility.onfinished()
-
-
-
-                    true
-
-                }
                 else -> false
             }
         }

@@ -3,21 +3,25 @@ package com.example.myapplication.activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.myapplication.model.ModelLoginActivity
 import com.example.myapplication.presenter.PresenterLoginActivity
 import com.example.myapplication.utility.Utility
 import com.example.myapplication.view.ViewLoginActivity
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class LoginActivity : AppCompatActivity(), Utility {
 
     private lateinit var presenter: PresenterLoginActivity
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        checkLogin()
 
+
+        checkLogin()
         val view = ViewLoginActivity(this, this)
         val model = ModelLoginActivity(this)
 

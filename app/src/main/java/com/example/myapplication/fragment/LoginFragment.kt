@@ -3,6 +3,7 @@ package com.example.myapplication.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +25,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginFragment : Fragment() {
+class LoginFragment() : Fragment() {
 
     private val presenter: PresenterLoginFragment by inject()
     private lateinit var email : String
@@ -52,7 +53,8 @@ class LoginFragment : Fragment() {
 
                 progressBar_login_fragment.visibility = View.VISIBLE
 
-                val query = "CALL check_login('${email}','${password}')"
+                val query = "CALL check_login('${edt_email_login_fragment.text.toString()}','${edt_password_login_fragment.text.toString()}')"
+
 
                 apiService.getAPi()
                     .userLogin(
@@ -75,6 +77,10 @@ class LoginFragment : Fragment() {
 
                             val data = response.body()
 
+
+
+                            Log.e("hassan", "${response.body()}")
+
                             if (data != null) {
 
                                 if (data.data[0].Result == "1") {
@@ -89,12 +95,16 @@ class LoginFragment : Fragment() {
                                     )
                                     editor?.apply()
 
-                                    toast(data.msg)
+                                    toast("خوش آمدین :)")
+
+
 
                                     startActivity<MainActivity>()
 
+
+
                                 } else
-                                    toast(data.msg)
+                                    toast("نام کاربری یا پسورد صحیح نمیباشد")
 
                             }
 

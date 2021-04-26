@@ -17,8 +17,8 @@ val fragmentModules = module {
     single { HomeFragment() }
     single { Shop_Fragment() }
     single { Acount_Fragment() }
-    single { LoginFragment() }
-    single { RegisterFragment() }
+    factory { LoginFragment() }
+    factory { RegisterFragment() }
 
 
 }
