@@ -3,6 +3,7 @@ package com.example.myapplication.view
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ProgressBar
@@ -15,20 +16,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codesgood.views.JustifiedTextView
 import com.example.myapplication.R
+import com.example.myapplication.activity.MainActivity
 import com.example.myapplication.adpter.RecyclerCommentsAdapter
-import com.example.myapplication.dataClass.DataCategoriItem
-import com.example.myapplication.dataClass.DataComments
-import com.example.myapplication.dataClass.DataProduct
+import com.example.myapplication.dataClass.*
 import com.example.myapplication.net.ApiService
 import com.example.myapplication.utility.PicasoUtility
 import com.example.myapplication.utility.Utility
 import com.example.myapplication.view.CustomView.CustomTextVieForTakhfif
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_detail.view.*
+import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.view.*
+import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
 import org.koin.core.KoinContext
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @SuppressLint("ViewConstructor")
 class ViewDetailActivity(
@@ -51,11 +58,12 @@ class ViewDetailActivity(
     private val recycler : RecyclerView
     private val progressbar : ProgressBar
     private val scrollView: ScrollView
-
+    private val apiService:  ApiService by inject()
     private val picassoUtility: PicasoUtility by inject()
 
     init {
         val mainView = inflate(context, R.layout.activity_detail, this)
+
 
         root = mainView.detail_root
         imgback = mainView.question_imgBack_detail
@@ -91,7 +99,7 @@ class ViewDetailActivity(
 
 
 
-    fun onclickHandler() {
+    fun onclickHandler(id : String) {
 
         imgback.setOnClickListener {
             utility.onfinished()
@@ -112,7 +120,53 @@ class ViewDetailActivity(
 
         }
 
-        txtbuy.setOnClickListener{ context.toast("onclik")}
+        txtbuy.setOnClickListener{
+
+            val pref = context.getSharedPreferences("pref", Context.MODE_PRIVATE)
+            val email = pref.getString("email", "default")
+            val query = "CALL insert_cart($id,'${email}')"
+
+            Log.e("hassan", "${query}")
+
+            apiService.getAPi()
+                .insert_cart(
+                    "insert","${query}"
+
+                )
+                .enqueue(object : Callback<DataInsert> {
+
+                    override fun onFailure(call: Call<DataInsert>, t: Throwable) {
+                        context.toast("خطای اتصال به اینترنت")
+                    }
+
+                    override fun onResponse(
+                        call: Call<DataInsert>,
+                        response: Response<DataInsert>
+                    ) {
+
+
+                        val data = response.body()
+
+
+
+                        Log.e("hassan", "${response.body()}")
+
+                        if (data != null) {
+
+                            if (data.status == 200) {
+
+                                context.toast("کالا با موقعیت به سبد خرید شما اضافه شد.")
+
+                            } else
+
+                                context.toast("مشکلی در اضافه کردن به سبد خرید ایجاد شده است.")
+
+                        }
+
+                    }
+
+                })
+        }
 
 
     }

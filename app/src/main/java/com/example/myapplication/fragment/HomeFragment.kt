@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,6 +40,9 @@ class HomeFragment : Fragment() {
     private lateinit var recycle_porforosh: ProductView
     private lateinit var recycle_new: ProductView
     private lateinit var img_baner2: AppCompatImageView
+    private lateinit var progeresbar: ProgressBar
+    private lateinit var root: ConstraintLayout
+
 
 
     override fun onCreateView(
@@ -55,6 +60,10 @@ class HomeFragment : Fragment() {
         recycle_takhfif = home_fragment_recycle_takhfif
         recycle_porforosh = home_fragment_recycle_porforosh
         recycle_new = home_fragment_recycle_new
+        progeresbar = home_Fragment_progeresbar
+        root = home_frament_root
+
+
         presenter.oncreate()
 
     }
@@ -105,13 +114,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun showProgress() {
-        home_Fragment_progeresbar.visibility = View.VISIBLE
-        home_frament_root.visibility = View.INVISIBLE
+        progeresbar.visibility = View.VISIBLE
+        root.visibility = View.INVISIBLE
     }
 
     private fun hideProgress() {
-        home_Fragment_progeresbar.visibility = View.INVISIBLE
-        home_frament_root.visibility = View.VISIBLE
+        progeresbar.visibility = View.INVISIBLE
+        root.visibility = View.VISIBLE
     }
 
 

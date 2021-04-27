@@ -67,9 +67,19 @@ class ApiService {
         fun userRegister(
             @Field("type") type: String,
             @Field("query") query: String
-        ): Call<DataRegiser>
+        ): Call<DataInsert>
+
+        @GET("webservice/project/ws_tb.php")
+        fun insert_cart(
+            @Query("type") type: String,
+            @Query("query") query: String
+        ): Call<DataInsert>
+
 
     }
+
+
+
 
     fun getAPi(): DataApi =
         Retrofit.Builder()

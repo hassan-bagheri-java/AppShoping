@@ -36,7 +36,7 @@ class PresenterDetailActivity (
 
 
     private fun onclickHandler (){
-        view.onclickHandler()
+        view.onclickHandler(model.getIdAsIntent().toString())
     }
 
     private fun settitle(){

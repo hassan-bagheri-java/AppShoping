@@ -12,13 +12,10 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.example.myapplication.R
 import com.example.myapplication.activity.MainActivity
 import com.example.myapplication.activity.WebActivity
-import com.example.myapplication.dataClass.DataLoginWebservice
-import com.example.myapplication.dataClass.DataRegiser
+import com.example.myapplication.dataClass.DataInsert
 import com.example.myapplication.model.ModelWebView
 import com.example.myapplication.net.ApiService
-import com.example.myapplication.presenter.PresenterLoginFragment
 import com.example.myapplication.presenter.PresenterRegisterFragment
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -76,16 +73,16 @@ class RegisterFragment : Fragment() {
                         "insert","${query}"
 
                     )
-                    .enqueue(object : Callback<DataRegiser> {
+                    .enqueue(object : Callback<DataInsert> {
 
-                        override fun onFailure(call: Call<DataRegiser>, t: Throwable) {
+                        override fun onFailure(call: Call<DataInsert>, t: Throwable) {
                             toast("خطای اتصال به اینترنت")
 //                            progressBar_login_fragment.visibility = View.INVISIBLE
                         }
 
                         override fun onResponse(
-                            call: Call<DataRegiser>,
-                            response: Response<DataRegiser>
+                            call: Call<DataInsert>,
+                            response: Response<DataInsert>
                         ) {
 
 //                            progressBar_login_fragment.visibility = View.INVISIBLE
