@@ -5,7 +5,7 @@ import android.content.Context
 class ModelAcountFragment(private val context: Context? ) {
 
     fun getNmame() =
-        context?.getSharedPreferences("pref", Context.MODE_PRIVATE)?.getString("name", "") ?: ""
+        context?.getSharedPreferences("pref", Context.MODE_PRIVATE)?.getString("userName", "") ?: ""
 
     fun getEmail() =
         context?.getSharedPreferences("pref", Context.MODE_PRIVATE)?.getString("email", "") ?: ""

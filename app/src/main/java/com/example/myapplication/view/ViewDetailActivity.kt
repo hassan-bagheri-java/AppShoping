@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codesgood.views.JustifiedTextView
 import com.example.myapplication.R
-import com.example.myapplication.activity.MainActivity
 import com.example.myapplication.adpter.RecyclerCommentsAdapter
 import com.example.myapplication.dataClass.*
 import com.example.myapplication.net.ApiService
@@ -25,12 +24,7 @@ import com.example.myapplication.utility.Utility
 import com.example.myapplication.view.CustomView.CustomTextVieForTakhfif
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_detail.view.*
-import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_login.view.*
-import org.jetbrains.anko.support.v4.startActivity
-import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
-import org.koin.core.KoinContext
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import retrofit2.Call
@@ -133,15 +127,15 @@ class ViewDetailActivity(
                     "insert","${query}"
 
                 )
-                .enqueue(object : Callback<DataInsert> {
+                .enqueue(object : Callback<DataQuery> {
 
-                    override fun onFailure(call: Call<DataInsert>, t: Throwable) {
+                    override fun onFailure(call: Call<DataQuery>, t: Throwable) {
                         context.toast("خطای اتصال به اینترنت")
                     }
 
                     override fun onResponse(
-                        call: Call<DataInsert>,
-                        response: Response<DataInsert>
+                        call: Call<DataQuery>,
+                        response: Response<DataQuery>
                     ) {
 
 

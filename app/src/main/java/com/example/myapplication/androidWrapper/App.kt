@@ -14,8 +14,7 @@ class App : Application() {
                 fragmentModules,
                 modelModules,
                 apiModules,
-                presenterModules,
-                fragment
+                presenterModules
             ))
     }
 }

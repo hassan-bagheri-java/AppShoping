@@ -14,9 +14,11 @@ import com.example.myapplication.R
 import com.example.myapplication.activity.MainActivity
 import com.example.myapplication.activity.WebActivity
 import com.example.myapplication.dataClass.DataLoginWebservice
+import com.example.myapplication.dataClass.DataUserWebservice
 import com.example.myapplication.model.ModelWebView
 import com.example.myapplication.net.ApiService
 import com.example.myapplication.presenter.PresenterLoginFragment
+import com.example.myapplication.utility.Utility
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -25,12 +27,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginFragment() : Fragment() {
+class LoginFragment(
+    private val utility: Utility
+) : Fragment() {
 
     private val presenter: PresenterLoginFragment by inject()
-    private lateinit var email : String
-    private lateinit var password : String
-    private lateinit var txtLogin : AppCompatTextView
+    private lateinit var email: String
+    private lateinit var password: String
+    private lateinit var txtLogin: AppCompatTextView
     private val apiService: ApiService by inject()
 
     override fun onCreateView(
@@ -53,12 +57,13 @@ class LoginFragment() : Fragment() {
 
                 progressBar_login_fragment.visibility = View.VISIBLE
 
-                val query = "CALL check_login('${edt_email_login_fragment.text.toString()}','${edt_password_login_fragment.text.toString()}')"
+                val query =
+                    "CALL check_login('${edt_email_login_fragment.text.toString()}','${edt_password_login_fragment.text.toString()}')"
 
 
                 apiService.getAPi()
                     .userLogin(
-                        "select","${query}"
+                        "select", "${query}"
 
                     )
                     .enqueue(object : Callback<DataLoginWebservice> {
@@ -85,22 +90,63 @@ class LoginFragment() : Fragment() {
 
                                 if (data.data[0].Result == "1") {
 
-                                    val pref =
-                                        activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
-                                    val editor = pref?.edit()
-                                    editor?.putBoolean("login", true)
-                                    editor?.putString(
-                                        "email",
-                                        edt_email_login_fragment.text.toString()
-                                    )
-                                    editor?.apply()
 
                                     toast("خوش آمدین :)")
 
 
 
                                     startActivity<MainActivity>()
+                                    utility.onfinished()
 
+                                    val query = "call select_user('${edt_email_login_fragment.text.toString()}')"
+                                    apiService.getAPi()
+                                        .getUserInfo("select_custom", "${query}")
+                                        .enqueue(object : Callback<DataUserWebservice> {
+
+                                            override fun onFailure(
+                                                call: Call<DataUserWebservice>,
+                                                t: Throwable
+                                            ) {
+
+                                                toast("خطای اتصال به اینترنت")
+
+                                            }
+
+                                            override fun onResponse(
+                                                call: Call<DataUserWebservice>,
+                                                response: Response<DataUserWebservice>
+                                            ) {
+
+                                                val data = response.body()
+                                                Log.e("hassann","${response}")
+                                                if (data != null) {
+
+                                                    val pref =
+                                                        activity?.getSharedPreferences(
+                                                            "pref",
+                                                            Context.MODE_PRIVATE
+                                                        )
+                                                    val editor = pref?.edit()
+                                                    editor?.putBoolean("login", true)
+                                                    editor?.putString(
+                                                        "email",
+                                                        edt_email_login_fragment.text.toString()
+                                                    )
+                                                    editor?.putString(
+                                                        "userName",
+                                                        data.data[0].userName
+                                                    )
+                                                    editor?.apply()
+                                                    Log.e("hassan","${email}")
+                                                    Log.e("hassan","${data.data[0].userName}")
+
+
+
+                                                }
+                                            }
+
+
+                                        })
 
 
                                 } else

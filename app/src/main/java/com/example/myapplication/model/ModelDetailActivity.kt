@@ -36,7 +36,7 @@ class ModelDetailActivity ( private val context: Activity) : KoinComponent {
 
                 override fun onFailure(call: Call<DataProductWebservice>, t: Throwable) {
 
-                    countryPresenterListener.onFailure("خط در دریافت طلاعات ازسرور")
+                    countryPresenterListener.onFailure("خطا در دریافت طلاعات ازسرور")
 
                 }
 

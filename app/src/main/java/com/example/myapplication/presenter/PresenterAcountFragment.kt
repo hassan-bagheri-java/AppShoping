@@ -9,7 +9,7 @@ class PresenterAcountFragment(
     private val model : ModelAcountFragment
 ) : BaseLifeCycle{
     override fun oncreate() {
-
+        setDataUser()
     }
 
     private fun setDataUser(){

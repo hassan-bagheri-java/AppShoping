@@ -67,13 +67,34 @@ class ApiService {
         fun userRegister(
             @Field("type") type: String,
             @Field("query") query: String
-        ): Call<DataInsert>
+        ): Call<DataQuery>
 
         @GET("webservice/project/ws_tb.php")
         fun insert_cart(
             @Query("type") type: String,
             @Query("query") query: String
-        ): Call<DataInsert>
+        ): Call<DataQuery>
+
+        @GET("webservice/project/ws_tb.php")
+        fun deleteAll_cart(
+            @Query("type") type: String,
+            @Query("query") table: String
+        ): Call<DataQuery>
+
+
+        @GET("webservice/project/ws_tb.php")
+        fun  show_cartlist(
+        @Query("type") type: String,
+        @Query("query") query: String
+        ): Call<DataProductWebservice>
+
+
+        @GET("webservice/project/ws_tb.php")
+        fun  getUserInfo(
+            @Query("type") type: String,
+            @Query("query") query: String
+        ): Call<DataUserWebservice>
+
 
 
     }

@@ -1,27 +1,35 @@
 package com.example.myapplication.adpter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.activity.DetailActivity
 import com.example.myapplication.dataClass.DataProduct
 import com.example.myapplication.utility.PicasoUtility
 import kotlinx.android.synthetic.main.item_recycler_shop.view.*
 import org.jetbrains.anko.layoutInflater
+import org.jetbrains.anko.startActivity
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 
-class RecyclerShopAdapter (private val data : List<DataProduct>):
-RecyclerView.Adapter<RecyclerShopAdapter.ShopViewHolder>(){
+class RecyclerShopAdapter(
+    private var data: List<DataProduct>,
+    private val context: Context? = null
+) :
+    RecyclerView.Adapter<RecyclerShopAdapter.ShopViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ShopViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_recycler_shop,
-                parent,
-                false)
+                .inflate(
+                    R.layout.item_recycler_shop,
+                    parent,
+                    false
+                )
         )
 
     override fun onBindViewHolder(holder: ShopViewHolder, position: Int) {
@@ -29,8 +37,6 @@ RecyclerView.Adapter<RecyclerShopAdapter.ShopViewHolder>(){
     }
 
     override fun getItemCount() = data.size
-
-
 
 
     inner class ShopViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), KoinComponent {
@@ -42,23 +48,39 @@ RecyclerView.Adapter<RecyclerShopAdapter.ShopViewHolder>(){
         private val txtDiscount = itemView.txt_discount_shop_recycler
         private val ratingBar = itemView.ratingBar_shop_recycler
 
-        fun setData(data : DataProduct){
+        fun setData(data: DataProduct) {
 
-            picasoUtility.setimage(data.imgAddress,imgProduct)
+            picasoUtility.setimage(data.imgAddress, imgProduct)
             txtName.text = data.title
 
             if (data.discount == "1") {
                 txtDiscount.visibility = View.VISIBLE
                 txtPrice.text = data.priceDiscount
-                txtDiscount.text = data.price
+                txtDiscount.setCustomText(data.price)
             } else {
                 txtDiscount.visibility = View.INVISIBLE
                 txtPrice.text = data.price
             }
 
             ratingBar.rating = data.rate.toFloat()
+
+            imgProduct.setOnClickListener {
+                context?.startActivity<DetailActivity>(
+                    RecycleItemProductAdapter.KEY_ID to data.id,
+                    RecycleItemProductAdapter.KEY_TITTLE to data.title
+                )
+            }
         }
 
+
+
+    }
+
+
+
+    fun refresh(data: List<DataProduct>) {
+        this.data = data
+        notifyDataSetChanged()
     }
 
 }

@@ -8,6 +8,7 @@ import com.example.myapplication.net.ApiService
 import com.example.myapplication.presenter.PresenterHomeFragment
 import com.example.myapplication.presenter.PresenterLoginFragment
 import com.example.myapplication.presenter.PresenterRegisterFragment
+import com.example.myapplication.presenter.PresenterShopFragment
 import com.example.myapplication.utility.PicasoUtility
 import com.squareup.picasso.Picasso
 import org.koin.dsl.module.module
@@ -30,6 +31,7 @@ val modelModules = module {
     factory { ModelAboutMeActivity() }
     factory { ModelLoginFragment() }
     factory { ModelRegisterFragment() }
+    factory { ModelShopFragment() }
 
 
 
@@ -41,12 +43,12 @@ val apiModules = module {
     single { PicasoUtility() }
 }
 
-val presenterModules = module {
-}
 
-val fragment = module {
+
+val presenterModules = module {
     single { PresenterHomeFragment(get() as HomeFragment , get() as ModelHomeFragment) }
     factory { PresenterLoginFragment(get() as LoginFragment, get() as ModelLoginFragment) }
     factory { PresenterRegisterFragment(get() as RegisterFragment, get() as ModelRegisterFragment) }
+    single { PresenterShopFragment(get() as Shop_Fragment, get() as ModelShopFragment) }
 }
 

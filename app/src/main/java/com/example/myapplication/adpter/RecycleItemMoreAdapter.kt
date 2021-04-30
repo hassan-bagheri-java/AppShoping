@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.activity.DetailActivity
 import com.example.myapplication.dataClass.DataProduct
 import com.example.myapplication.utility.PicasoUtility
 import kotlinx.android.synthetic.main.item_recycler_product_view.view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
@@ -55,7 +57,11 @@ class RecycleItemMoreAdapter(private val context: Context, private val data: Lis
             }
 
             rootview.setOnClickListener {
-                context.toast("onclick")
+//                context.toast("onclick")
+                context?.startActivity<DetailActivity>(
+                    RecycleItemProductAdapter.KEY_ID to data.id,
+                    RecycleItemProductAdapter.KEY_TITTLE to data.title
+                )
             }
         }
     }

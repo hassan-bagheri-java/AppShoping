@@ -43,6 +43,10 @@ class LoginActivity : AppCompatActivity(), Utility {
             startActivity<MainActivity>()
     }
 
+    override fun onfinished() {
+        finish()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
 
