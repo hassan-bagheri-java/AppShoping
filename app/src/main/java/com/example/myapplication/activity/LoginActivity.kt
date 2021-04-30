@@ -39,8 +39,10 @@ class LoginActivity : AppCompatActivity(), Utility {
     private fun checkLogin() {
         val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
 
-        if (pref.getBoolean("login", false))
+        if (pref.getBoolean("login", false)){
             startActivity<MainActivity>()
+        finish()}
+
     }
 
     override fun onfinished() {

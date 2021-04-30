@@ -28,10 +28,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginFragment(
-//    private val utility: Utility
-//    private val context : AppCompatActivity
-) : Fragment() {
+class LoginFragment() : Fragment() {
 
     private val presenter: PresenterLoginFragment by inject()
     private lateinit var email: String
@@ -98,10 +95,10 @@ class LoginFragment(
 
 
                                     startActivity<MainActivity>()
-//                                    context.finish()
-//                                    utility.onfinished()
+                                    activity?.finish()
 
-                                    val query = "call select_user('${edt_email_login_fragment.text.toString()}')"
+                                    val query =
+                                        "call select_user('${edt_email_login_fragment.text.toString()}')"
                                     apiService.getAPi()
                                         .getUserInfo("select_custom", "${query}")
                                         .enqueue(object : Callback<DataUserWebservice> {
@@ -121,7 +118,7 @@ class LoginFragment(
                                             ) {
 
                                                 val data = response.body()
-                                                Log.e("hassann","${response}")
+                                                Log.e("hassann", "${response}")
                                                 if (data != null) {
 
                                                     val pref =
@@ -140,9 +137,8 @@ class LoginFragment(
                                                         data.data[0].userName
                                                     )
                                                     editor?.apply()
-                                                    Log.e("hassan","${email}")
-                                                    Log.e("hassan","${data.data[0].userName}")
-
+                                                    Log.e("hassan", "${email}")
+                                                    Log.e("hassan", "${data.data[0].userName}")
 
 
                                                 }

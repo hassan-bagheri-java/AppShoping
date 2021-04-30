@@ -29,7 +29,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class RegisterFragment(
-//    private val utility: Utility
 ) : Fragment() {
 
     private val presenter: PresenterRegisterFragment by inject()
@@ -118,10 +117,7 @@ class RegisterFragment(
                                     toast("ثبت نام با موقعیت انجام شد")
 
                                     startActivity<MainActivity>()
-//                                    utility.onfinished()
-
-
-
+                                    activity?.finish()
 
 
                                 } else
