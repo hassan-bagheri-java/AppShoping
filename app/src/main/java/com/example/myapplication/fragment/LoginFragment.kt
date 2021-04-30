@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import com.example.myapplication.R
@@ -28,7 +29,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginFragment(
-    private val utility: Utility
+//    private val utility: Utility
+//    private val context : AppCompatActivity
 ) : Fragment() {
 
     private val presenter: PresenterLoginFragment by inject()
@@ -96,7 +98,8 @@ class LoginFragment(
 
 
                                     startActivity<MainActivity>()
-                                    utility.onfinished()
+//                                    context.finish()
+//                                    utility.onfinished()
 
                                     val query = "call select_user('${edt_email_login_fragment.text.toString()}')"
                                     apiService.getAPi()
